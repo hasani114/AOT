@@ -28,6 +28,15 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		response.setContentType("text/html");
+
+		String tourname = request.getParameter("tourname");
+		request.getParameter("country");
+		request.getParameter("tourlcation");
+		
+		response.getWriter().append("</br>" + tourname);
+		
 	}
 
 	/**
