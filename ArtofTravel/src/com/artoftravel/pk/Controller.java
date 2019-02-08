@@ -1,6 +1,9 @@
 package com.artoftravel.pk;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +30,9 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		response.getWriter().append("Served at sdsd: ").append(request.getContextPath());
+		PrintWriter out = response.getWriter();
+		out.print(request.getQueryString());
 		
 		
 	}
@@ -42,11 +46,16 @@ public class Controller extends HttpServlet {
 		
 		response.setContentType("text/html");
 
-		String tourname = request.getParameter("tourname");
-		request.getParameter("country");
-		request.getParameter("tourlcation");
 		
-		response.getWriter().append("</br>" + tourname);
+		PrintWriter out = response.getWriter();
+		
+		
+			if (request.getQueryString().equalsIgnoreCase("addtour")) {		
+			RequestDispatcher res = request.getRequestDispatcher("/TourController");
+			res.forward(request, response);
+		} else out.print("not forwarded");
+		
+
 	}
 
 }

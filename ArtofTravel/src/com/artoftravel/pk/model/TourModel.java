@@ -7,16 +7,15 @@ public class TourModel {
 	private String tourname;
 	private String tourlocation;
 	private String country;
-	private int groupsize;
-	private double tourprice;
-	private int tourdays;
+	private String groupsize;
+	private String tourprice;
+	private String tourdays;
 	private String tourdescription;
-	private Date startdate;
-	private Date enddate;
+
 	
 	
-	public TourModel(String tourname, String tourlocation, String country, int groupsize, double tourprice,
-			int tourdays, String tourdescription, Date startdate, Date enddate) {
+	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
+			String tourdays, String tourdescription, Date startdate, Date enddate) {
 		super();
 		this.tourname = tourname;
 		this.tourlocation = tourlocation;
@@ -25,8 +24,7 @@ public class TourModel {
 		this.tourprice = tourprice;
 		this.tourdays = tourdays;
 		this.tourdescription = tourdescription;
-		this.startdate = startdate;
-		this.enddate = enddate;
+	
 	}
 
 
@@ -60,32 +58,32 @@ public class TourModel {
 	}
 
 
-	public int getGroupsize() {
+	public String getGroupsize() {
 		return groupsize;
 	}
 
 
-	public void setGroupsize(int groupsize) {
+	public void setGroupsize(String groupsize) {
 		this.groupsize = groupsize;
 	}
 
 
-	public double getTourprice() {
+	public String getTourprice() {
 		return tourprice;
 	}
 
 
-	public void setTourprice(double tourprice) {
+	public void setTourprice(String tourprice) {
 		this.tourprice = tourprice;
 	}
 
 
-	public int getTourdays() {
+	public String getTourdays() {
 		return tourdays;
 	}
 
 
-	public void setTourdays(int tourdays) {
+	public void setTourdays(String tourdays) {
 		this.tourdays = tourdays;
 	}
 
@@ -100,26 +98,7 @@ public class TourModel {
 	}
 
 
-	public Date getStartdate() {
-		return startdate;
-	}
 
-
-	public void setStartdate(Date startdate) {
-		this.startdate = startdate;
-	}
-
-
-	public Date getEnddate() {
-		return enddate;
-	}
-
-
-	public void setEnddate(Date enddate) {
-		this.enddate = enddate;
-	}
-	
-	
 	
 	
 	
