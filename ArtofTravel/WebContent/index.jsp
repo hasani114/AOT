@@ -12,7 +12,7 @@ take on extensive expeditions exploring all that is unique to a land and its peo
 
 
 <div class="container">
-<form action="Controller">
+<form action="Controller" method="post">
   <div class="row">
     <div class="form-group col-md-6">
       <label class="my-1 mr-2">Tour Name</label>
