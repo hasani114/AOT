@@ -31,12 +31,12 @@ public class TourController extends HttpServlet {
 	}
 
 	
-	
-	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
+		
+		// Getting paratmeter from post request and creating variables to send to the TourModel Class.
 			
 		String tourname = request.getParameter("tourname");
 		String tourlocation = request.getParameter("tourlocation");
@@ -47,33 +47,43 @@ public class TourController extends HttpServlet {
 		String tourdescription = request.getParameter("tourdescription");
 		
 		
+		
+		// Create an instance of TourModel and pass the values retreived from the parameters above
+		// Create instance of database helper class and call its add new tour method to update the database with the new entry
+		
+		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription);		
+		DatabaseHelper dbUpdate = new DatabaseHelper();
+		dbUpdate.addNewTour(tour);
+		
+		
+		
+		// After processing update to database forwarding request to viewtours page
+		
+		RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
+		res.forward(request, response);				
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		 * request.setAttribute("tourname", tourname); request.setAttribute("country",
+		 * country); request.setAttribute("tourlocation", tourlocation);
+		 * request.setAttribute("groupsize", groupsize);
+		 * request.setAttribute("tourprice", tourprice);
+		 * request.setAttribute("tourduration", tourduration);
+		 * request.setAttribute("tourdescription", tourdescription);
+		 */
+		
 		// Cast the Strings Groupsize, Number of Days, Tour Price to Int and Doubles
 //		int grpsize = Integer.parseInt(groupsize);
 //		int numdays = Integer.parseInt(tourduration);
 //		double tourpric = Integer.parseInt(tourprice);
-		
-		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription);
-		
-		DatabaseHelper dbUpdate = new DatabaseHelper();
-		dbUpdate.tourUpdate(tour);
-		
-
-		request.setAttribute("tourname", tourname);
-		request.setAttribute("country", country);
-		request.setAttribute("tourlocation", tourlocation);
-		request.setAttribute("groupsize", groupsize);
-		request.setAttribute("tourprice", tourprice);
-		request.setAttribute("tourduration", tourduration);
-		request.setAttribute("tourdescription", tourdescription);
-		
-		
-		
-		RequestDispatcher res = request.getRequestDispatcher("/confirmtour.jsp");
-		res.forward(request, response);				
-		
-
-		
-
 		
 		
 	}

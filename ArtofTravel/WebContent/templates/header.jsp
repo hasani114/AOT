@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ page import="java.sql.*" %>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Art of Travel</title>
   </head>
   
   <div class="container">
@@ -22,8 +24,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link" href="index.jsp">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="viewtours.jsp">View Tours</a>
@@ -52,3 +54,11 @@
 </div>
   <body>
   <div class="container">
+  <div class="jumbotron jumbotron-fluid">
+<div class="container">
+<h1>Art of Travel</h1>
+  <hr class="my-4">
+<p>At Art of Travel, we explore destinations, finding the best routes and the tastiest foods, meet with locals putting together exciting cultural experiences, 
+take on extensive expeditions exploring all that is unique to a land and its people and scrutinize prices to bring you all of this at the most affordable rates
+ possible!</p></div>
+</div></div>
