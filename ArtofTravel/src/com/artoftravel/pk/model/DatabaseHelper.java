@@ -27,8 +27,8 @@ public class DatabaseHelper {
 		stmt.setString(2, tourlocation);
 		stmt.setString(3, tourcountry);
 		stmt.setString(4, groupsize);
-		stmt.setString(5, tourduration);
-		stmt.setString(6, tourprice);
+		stmt.setString(5, tourprice);
+		stmt.setString(6, tourduration);
 		stmt.setString(7, tourdescription);
 		
 		stmt.execute();
