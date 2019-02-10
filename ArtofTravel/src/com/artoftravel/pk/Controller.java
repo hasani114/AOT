@@ -30,9 +30,8 @@ public class Controller extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at sdsd: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
-		out.print(request.getQueryString());
+		response.getWriter().append("Served at Main Controller: ").append(request.getContextPath());
+		
 		
 		
 	}
@@ -43,17 +42,12 @@ public class Controller extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
-		response.setContentType("text/html");
-
-		
-		PrintWriter out = response.getWriter();
-		
+				
 		
 			if (request.getQueryString().equalsIgnoreCase("addtour")) {		
 			RequestDispatcher res = request.getRequestDispatcher("/TourController");
 			res.forward(request, response);
-		} else out.print("not forwarded");
+		} else request.getRequestDispatcher("/index.jsp");
 		
 
 	}

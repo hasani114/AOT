@@ -9,20 +9,20 @@ public class TourModel {
 	private String country;
 	private String groupsize;
 	private String tourprice;
-	private String tourdays;
+	private String tourduration;
 	private String tourdescription;
 
 	
 	
 	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
-			String tourdays, String tourdescription, Date startdate, Date enddate) {
+			String tourduration, String tourdescription) {
 		super();
 		this.tourname = tourname;
 		this.tourlocation = tourlocation;
 		this.country = country;
 		this.groupsize = groupsize;
 		this.tourprice = tourprice;
-		this.tourdays = tourdays;
+		this.tourduration = tourduration;
 		this.tourdescription = tourdescription;
 	
 	}
@@ -78,13 +78,13 @@ public class TourModel {
 	}
 
 
-	public String getTourdays() {
-		return tourdays;
+	public String getTourDuration() {
+		return tourduration;
 	}
 
 
-	public void setTourdays(String tourdays) {
-		this.tourdays = tourdays;
+	public void setTourDuration(String tourdays) {
+		this.tourduration = tourdays;
 	}
 
 

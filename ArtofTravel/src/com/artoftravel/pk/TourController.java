@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.artoftravel.pk.model.TourModel;
+import com.artoftravel.pk.model.*;
 
 
 @WebServlet("/TourController")
@@ -26,7 +26,7 @@ public class TourController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at 2123: ").append(request.getContextPath());	
+		response.getWriter().append("Served at Tour Controller: ").append(request.getContextPath());		
 		
 	}
 
@@ -37,20 +37,25 @@ public class TourController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
+			
 		String tourname = request.getParameter("tourname");
-		String country = request.getParameter("country");
 		String tourlocation = request.getParameter("tourlocation");
+		String country = request.getParameter("country");
 		String groupsize = request.getParameter("groupsize");
 		String tourprice = request.getParameter("tourprice");
-		String tourdays = request.getParameter("tourdays");
+		String tourduration = request.getParameter("tourduration");
 		String tourdescription = request.getParameter("tourdescription");
 		
 		
 		// Cast the Strings Groupsize, Number of Days, Tour Price to Int and Doubles
-		int grpsize = Integer.parseInt(groupsize);
-		int numdays = Integer.parseInt(tourdays);
-		double tourpric = Integer.parseInt(tourprice);
-
+//		int grpsize = Integer.parseInt(groupsize);
+//		int numdays = Integer.parseInt(tourduration);
+//		double tourpric = Integer.parseInt(tourprice);
+		
+		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription);
+		
+		DatabaseHelper dbUpdate = new DatabaseHelper();
+		dbUpdate.tourUpdate(tour);
 		
 
 		request.setAttribute("tourname", tourname);
@@ -58,22 +63,17 @@ public class TourController extends HttpServlet {
 		request.setAttribute("tourlocation", tourlocation);
 		request.setAttribute("groupsize", groupsize);
 		request.setAttribute("tourprice", tourprice);
-		request.setAttribute("tourdays", tourdays);
+		request.setAttribute("tourduration", tourduration);
 		request.setAttribute("tourdescription", tourdescription);
 		
-		GregorianCalendar cal = new GregorianCalendar();
 		
 		
-		
-		
-		
-		TourModel tourdata = new TourModel();
-		
+		RequestDispatcher res = request.getRequestDispatcher("/confirmtour.jsp");
+		res.forward(request, response);				
 		
 
 		
-		RequestDispatcher res = request.getRequestDispatcher("/confirmtour.jsp");
-		res.forward(request, response);
+
 		
 		
 	}

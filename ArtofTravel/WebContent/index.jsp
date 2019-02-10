@@ -53,11 +53,11 @@ take on extensive expeditions exploring all that is unique to a land and its peo
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Price</label> <input type="text"
-					class="form-control" name="tourprice" placeholder="Price">
+					class="form-control" name="tourprice" >
 			</div>
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Number of Days</label> <select
-					class="custom-select" name="tourdays">
+					class="custom-select" name="tourduration">
 					<option selected>6</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
