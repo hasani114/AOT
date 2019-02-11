@@ -51,7 +51,7 @@ public class DatabaseHelper {
 			String query = "DELETE FROM tour_details WHERE ID=" + deletetour ;
 			PreparedStatement stmt = con.prepareStatement(query);
 		
-			stmt.execute();
+			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 

@@ -29,18 +29,19 @@ public class TourController extends HttpServlet {
 		// TODO Auto-generated method stub
 				
 		
+		if (request.getQueryString().contains("delete")) {
 			String deletetour = request.getParameter("delete");
 			
 			DatabaseHelper database = new DatabaseHelper();
 			database.deleteTour(deletetour);
 			
 			
-			// After processing update to database forwarding request to viewtours page
-			
+		// After processing update to database forwarding request to viewtours page
+		
 			RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
 			res.forward(request, response);				
 			
-		
+		}
 		
 		response.getWriter().append("Served at Tour Controller: ").append(request.getContextPath());		
 
@@ -78,8 +79,8 @@ public class TourController extends HttpServlet {
 		
 		// After processing update to database forwarding request to viewtours page
 		
-		response.sendRedirect("/viewtours.jsp");
-		
+		RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
+		res.forward(request, response);			
 		
 		
 		
