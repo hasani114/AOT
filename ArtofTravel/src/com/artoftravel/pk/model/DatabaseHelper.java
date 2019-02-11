@@ -40,7 +40,22 @@ public class DatabaseHelper {
 
 	}
 	
-	public void deleteTour() {
+	public void deleteTour(String deletetour) {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			// here sonoo is database name, root is username and password
+			String query = "DELETE FROM tour_details WHERE ID=" + deletetour ;
+			PreparedStatement stmt = con.prepareStatement(query);
+		
+			stmt.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
 		
 	}
 	

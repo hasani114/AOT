@@ -14,6 +14,8 @@
 <th scope="col">Price</th>
 <th scope="col">Duration (Days)</th>
 <th scope="col">Description</th>
+<th scope="col">Action</th>
+
 
 </tr>
 </thead>
@@ -38,7 +40,9 @@ try{
     <td><%= rs.getInt(5) %></td>
    <td><%= rs.getInt(6) %></td>
    <td><%= rs.getInt(7) %></td>
-   <td><%= rs.getString(8) %></td></tr>
+   <td><%= rs.getString(8) %></td>
+   <td> <form action="TourController" id="edittourform"><button type="submit" value="<%=rs.getInt(1) %>" name="edit" class="btn btn-link" >Edit</button></form>
+   		<form action="TourController" id="deletetourform"><button type="submit" value="<%=rs.getInt(1) %>" name="delete" class="btn btn-link">Delete</button></form></td></tr>
     
     <%
 			}

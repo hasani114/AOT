@@ -2,6 +2,7 @@ package com.artoftravel.pk;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.GregorianCalendar;
 
 import javax.servlet.RequestDispatcher;
@@ -26,7 +27,25 @@ public class TourController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+				
+		
+			String deletetour = request.getParameter("delete");
+			
+			DatabaseHelper database = new DatabaseHelper();
+			database.deleteTour(deletetour);
+			
+			
+			// After processing update to database forwarding request to viewtours page
+			
+			RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
+			res.forward(request, response);				
+			
+		
+		
 		response.getWriter().append("Served at Tour Controller: ").append(request.getContextPath());		
+
+				
+		
 		
 	}
 
@@ -59,8 +78,7 @@ public class TourController extends HttpServlet {
 		
 		// After processing update to database forwarding request to viewtours page
 		
-		RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
-		res.forward(request, response);				
+		response.sendRedirect("/viewtours.jsp");
 		
 		
 		
