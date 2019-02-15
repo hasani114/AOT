@@ -28,9 +28,8 @@ public class Controller extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at Main Controller: ").append(request.getContextPath());	
-		
-		
+//		response.getWriter().append("Served at Main Controller: ").append(request.getContextPath());	
+
 	}
 
 	
@@ -44,6 +43,8 @@ public class Controller extends HttpServlet {
 			res.forward(request, response);
 		} else request.getRequestDispatcher("/index.jsp");
 		
+			
+			
 
 	}
 

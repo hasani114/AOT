@@ -45,6 +45,8 @@ public class TourController extends HttpServlet {
 		
 		response.getWriter().append("Served at Tour Controller: ").append(request.getContextPath());		
 
+	
+			
 				
 		
 		
