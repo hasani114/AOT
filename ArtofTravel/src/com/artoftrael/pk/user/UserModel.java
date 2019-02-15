@@ -2,6 +2,7 @@ package com.artoftrael.pk.user;
 
 public class UserModel {
 
+	private int UserId;
 	private String UserEmail;
 	private String UserFirstName;
 	private String UserLastName;
@@ -10,6 +11,21 @@ public class UserModel {
 	private String UserPassword;
 	
 	
+	
+	
+	public UserModel(int userId, String userEmail, String userFirstName, String userLastName, String userGender,
+			String userPhone, String userPassword) {
+		super();
+		UserId = userId;
+		UserEmail = userEmail;
+		UserFirstName = userFirstName;
+		UserLastName = userLastName;
+		UserGender = userGender;
+		UserPhone = userPhone;
+		UserPassword = userPassword;
+	}
+
+
 	public UserModel(String userEmail, String userFirstName, String userLastName, String userGender, String userPhone,
 			String userPassword) {
 		super();
@@ -19,6 +35,18 @@ public class UserModel {
 		UserGender = userGender;
 		UserPhone = userPhone;
 		UserPassword = userPassword;
+	}
+
+	
+	
+
+	public int getUserId() {
+		return UserId;
+	}
+
+
+	public void setUserId(int userId) {
+		UserId = userId;
 	}
 
 

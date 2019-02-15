@@ -39,13 +39,13 @@
 		    <option value="2">+198</option>
 		    <option value="3">+701</option>
 		</select>
-    	<input nclass="form-control" placeholder="Phone number" name="userphone" type="text">
+    	<input class="form-control" placeholder="Phone number" name="userphone" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-building"></i> </span>
 		</div>
-		<select class="form-control">
+		<select class="form-control" name="usergender">
 			<option selected=""> Gender </option>
 			<option>Male</option>
 			<option>Female</option>
