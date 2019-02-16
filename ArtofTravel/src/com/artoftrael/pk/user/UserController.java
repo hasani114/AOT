@@ -22,6 +22,16 @@ public class UserController extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at Main Controller: ").append(request.getContextPath());	
 
+    	if (request.getQueryString().contentEquals("viewUsers")) {
+    		
+    		UserOperation ope = new UserOperation();
+    		request.setAttribute("viewUsers", ope.viewUsers());		
+    		RequestDispatcher resq = request.getRequestDispatcher("Users.jsp");
+    		resq.forward(request, response);
+    		
+    	}
+    	
+    	
 	}
 
 

@@ -3,6 +3,14 @@ package com.artoftrael.pk.user;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+
 
 public class UserOperation {
 
@@ -32,6 +40,43 @@ public class UserOperation {
 			e.printStackTrace();
 
 		}
+
+		
+		}
+	
+		public ArrayList<UserModel> viewUsers() {
+			
+			ArrayList<UserModel> userlist = new ArrayList<UserModel>();
+
+			
+			try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			
+			String query = "select * FROM users";
+			Statement stmt = con.createStatement();
+				
+			ResultSet rs = stmt.executeQuery(query);
+			
+			while (rs.next()) {
+				userlist.add(new UserModel(rs.getInt("ID"), rs.getString("user_first_name"), rs.getString("user_last_name"), rs.getString("user_email"), rs.getString("user_phone"),
+						rs.getString("user_gender"), rs.getString("user_password")));	
+			}
+			
+			stmt.close();
+		    rs.close();
+		    con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+			
+			
+			return userlist;
 
 		
 		
