@@ -28,6 +28,9 @@
         <a class="nav-link" href="index.jsp">Home</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="Add-Tour.jsp">Add Tour</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="viewtours.jsp">View Tours</a>
       </li>
       <li class="nav-item">

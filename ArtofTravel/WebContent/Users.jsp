@@ -5,7 +5,7 @@
 
 <% ArrayList<UserModel> users = new ArrayList<UserModel>();
 	
-users = (ArrayList<UserModel>) request.getAttribute("viewUsers");
+users = (ArrayList) request.getAttribute("viewUsers");
 
 %>
 <div class=container>
@@ -21,7 +21,6 @@ users = (ArrayList<UserModel>) request.getAttribute("viewUsers");
 <td>Gender</td>
 <td>Password</td>
 </tr>
-
 </thead>
 
 <%
@@ -44,17 +43,12 @@ while(iterator.hasNext()) {
 <td> <%=userdetails.getUserGender()%> </td>
 <td> <%=userdetails.getUserPassword()%> </td>
 </tr>
-<%
 
-}
 
-%>
+
+<% } %>
 
 </table>
-
-
-
-
 
 </div>
 

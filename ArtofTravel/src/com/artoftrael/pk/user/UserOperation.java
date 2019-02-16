@@ -16,8 +16,7 @@ public class UserOperation {
 
 	
 	public static void AddNewUser(UserModel user) {
-		
-		
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
@@ -32,7 +31,6 @@ public class UserOperation {
 			stmt.setString(4, user.getUserPhone());
 			stmt.setString(5, user.getUserGender());
 			stmt.setString(6, user.getUserPassword());
-			
 
 			stmt.execute();
 
@@ -41,45 +39,41 @@ public class UserOperation {
 
 		}
 
-		
-		}
-	
-		public ArrayList<UserModel> viewUsers() {
-			
-			ArrayList<UserModel> userlist = new ArrayList<UserModel>();
+	}
 
-			
-			try {
+	public ArrayList<UserModel> viewUsers() {
+
+		ArrayList<UserModel> userlist = new ArrayList<UserModel>();
+
+		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
 					"2001Space");
-			
+
 			String query = "select * FROM users";
 			Statement stmt = con.createStatement();
-				
+
 			ResultSet rs = stmt.executeQuery(query);
-			
+
 			while (rs.next()) {
-				userlist.add(new UserModel(rs.getInt("ID"), rs.getString("user_first_name"), rs.getString("user_last_name"), rs.getString("user_email"), rs.getString("user_phone"),
-						rs.getString("user_gender"), rs.getString("user_password")));	
+				userlist.add(new UserModel(rs.getInt("ID"), rs.getString("user_first_name"),
+						rs.getString("user_last_name"), rs.getString("user_email"), rs.getString("user_phone"),
+						rs.getString("user_gender"), rs.getString("user_password")));
 			}
-			
+
 			stmt.close();
-		    rs.close();
-		    con.close();
+			rs.close();
+			con.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		}
-			
-			
-			return userlist;
 
-		
-		
+		return userlist;
+
 	}
 	
 }
