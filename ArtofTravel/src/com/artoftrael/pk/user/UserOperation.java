@@ -76,4 +76,23 @@ public class UserOperation {
 
 	}
 	
+	public static boolean AuthenticateUser(String username, String password) {
+		
+		
+		// Connect to database
+		// select username column
+		// read through result to see if it equals username
+		// if false return false
+		// if true, write another query to get password of the username
+		// if password is valid, return true
+		
+		
+		
+		
+		if (username.equals("hasan")) {
+			return true;
+		} else return false;	
+		
+	}
+	
 }

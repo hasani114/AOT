@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/UserController")
 public class UserController extends HttpServlet {
@@ -38,6 +39,8 @@ public class UserController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		
+		if (request.getQueryString().equalsIgnoreCase("adduser")) {	
+
 		String firstname = request.getParameter("userfirstname");
 		String lastname = request.getParameter("userlastname");
 		String email = request.getParameter("useremail");
@@ -48,14 +51,36 @@ public class UserController extends HttpServlet {
 		UserModel user = new UserModel(firstname, lastname, email, phonenumber, gender, password);
 		UserOperation.AddNewUser(user);
 
-		RequestDispatcher res = request.getRequestDispatcher("index.jsp");
-		res.forward(request, response);
+		response.sendRedirect("UserController?viewUsers");
+		} 
 		
 		
+		if (request.getQueryString().equalsIgnoreCase("login")) {	
+			
+			String username = request.getParameter("username").toLowerCase();
+			String password = request.getParameter("password");
+			
+			Boolean auth = UserOperation.AuthenticateUser(username, password);
+			
+			if (auth.equals(true)) {
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("Username", username);
+			
+				response.sendRedirect("logintest.jsp");
+			} else response.sendRedirect("Login.jsp");
+			
+			
+		}
+		
+		
+		
+	} 
+	
 		
 	}
 	
 	
 	
 
-}
+

@@ -43,15 +43,7 @@ public class Controller extends HttpServlet {
 			res.forward(request, response);
 		} else request.getRequestDispatcher("/index.jsp");
 			
-			
-			if (request.getQueryString().equalsIgnoreCase("adduser")) {	
-				
-				RequestDispatcher res = request.getRequestDispatcher("/UserController");
-				res.forward(request, response);
-				
-			} else request.getRequestDispatcher("/index.jsp");
-			
-			
+	
 				
 		
 			
