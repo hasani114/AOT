@@ -1,4 +1,4 @@
- <%@ include file = "/templates/header.jsp" %>
+ <%@ include file = "/templates/header2.jsp" %>
  
  <div class="container">
  
@@ -6,18 +6,19 @@
 <table class="table table-hover">
 <thead class="thead-light">
 <tr>
-<th scope="col">#</th>
-<th scope="col">Title</th>
-<th scope="col">Location</th>
-<th scope="col">Country</th>
-<th scope="col">Group Of</th>
-<th scope="col">Price</th>
-<th scope="col">Duration (Days)</th>
-<th scope="col">Description</th>
+<th>#</th>
+<th>Title</th>
+<th>Location</th>
+<th>Country</th>
+<th>Group Of</th>
+<th>Price</th>
+<th>Duration (Days)</th>
+<th>Description</th>
+<th>Action</th>
+
 
 </tr>
 </thead>
-<tbody>
 <%  
 
 try{  
@@ -39,7 +40,9 @@ try{
    <td><%= rs.getInt(6) %></td>
    <td><%= rs.getInt(7) %></td>
    <td><%= rs.getString(8) %></td>
-
+   <td> <form action="/ArtofTravel/TourController" id="edittourform"><button type="submit" value="<%=rs.getInt(1) %>" name="edit" class="btn btn-link" >Edit</button></form>
+   		<form action="/ArtofTravel/TourController" id="deletetourform"><button type="submit" value="<%=rs.getInt(1) %>" name="delete" class="btn btn-link">Delete</button></form></td></tr>
+    
     <%
 			}
 
@@ -53,9 +56,8 @@ catch(Exception e){
 
 
 %>
-</tbody>
 </table>
 
 </div>
 
-<%@ include file = "templates/footer.jsp" %>
+<%@ include file = "/templates/footer.jsp" %>

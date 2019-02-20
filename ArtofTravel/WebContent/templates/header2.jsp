@@ -19,7 +19,7 @@
   
   
   
- <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+ <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -67,33 +67,4 @@
 </nav>
 
   <body>
- <div class="bd-example" >
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://imgcld.yatra.com/ytimages/image/upload/t_ann_trip_gallery_main/v1550059818/AdvNation/ANN_TRP751/trang_an_landscape_complex_unesco_lD2DKU.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://imgcld.yatra.com/ytimages/image/upload/t_ann_trip_gallery_main/v1517481702/AdvNation/ANN_TRP237/Trek-Everest-Base-Camp_1439798460_PvZBIN.jpg" class="d-block w-100" alt="...">
-        
-      </div>
-      <div class="carousel-item">
-        <img src="https://imgcld.yatra.com/ytimages/image/upload/t_ann_trip_gallery_main/v1517482596/AdvNation/ANN_TRP462/Pin_Parvati_Trek_(1)_1437478332_MaPToN.jpg" class="d-block w-100" alt="...">
-        
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
+<div class=container  style="padding-top: 20px"></div>

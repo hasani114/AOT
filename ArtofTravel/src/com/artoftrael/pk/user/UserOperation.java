@@ -76,23 +76,57 @@ public class UserOperation {
 
 	}
 	
-	public static boolean AuthenticateUser(String username, String password) {
+	public static ArrayList<UserModel> AuthenticateUser(String username, String password) {
 		
-		
+		//create arraylist to hold data from result
+		ArrayList<UserModel> testlist = new ArrayList<UserModel>();
+
 		// Connect to database
+		
+		try {
+
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			
 		// select username column
+			
+			String query = "select * FROM users where user_email = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, username);
+
+			ResultSet rs = stmt.executeQuery();
+
 		// read through result to see if it equals username
+			while (rs.next()) {
+				testlist.add(new UserModel(rs.getInt("ID"), rs.getString("user_first_name"),
+						rs.getString("user_last_name"), rs.getString("user_email"), rs.getString("user_phone"),
+						rs.getString("user_gender"), rs.getString("user_password")));
+			}
+
+			stmt.close();
+			rs.close();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
 		// if false return false
 		// if true, write another query to get password of the username
 		// if password is valid, return true
 		
+		return testlist;
 		
 		
-		
-		if (username.equals("hasan")) {
-			return true;
-		} else return false;	
+//		
+//		if (username.equals("hasan")) {
+//			return true;
+//		} else return false;	
 		
 	}
+	
+	
 	
 }

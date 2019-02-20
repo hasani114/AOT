@@ -38,7 +38,7 @@ public class TourController extends HttpServlet {
 			
 		// After processing update to database forwarding request to viewtours page
 		
-			RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
+			RequestDispatcher res = request.getRequestDispatcher("/Admin/viewtours.jsp");
 			res.forward(request, response);				
 			
 		}

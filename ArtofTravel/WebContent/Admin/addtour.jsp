@@ -1,11 +1,11 @@
-<%@ include file = "/templates/header.jsp" %>
-
+<%@ include file = "/templates/header2.jsp" %>
 
 
 
 
 <div class="container">
-	<form action="Controller?addtour" method="post">
+
+	<form action="../Controller?addtour" method="post">
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Tour Name</label> <input type="text"
@@ -79,4 +79,4 @@
 	</form>
 </div>
 
-<%@ include file = "templates/footer.jsp" %>
+<%@ include file = "/templates/footer.jsp" %>

@@ -1,6 +1,7 @@
 package com.artoftrael.pk.user;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class UserController extends HttpServlet {
     		
     		UserOperation ope = new UserOperation();
     		request.setAttribute("viewUsers", ope.viewUsers());		
-    		RequestDispatcher resq = request.getRequestDispatcher("Users.jsp");
+    		RequestDispatcher resq = request.getRequestDispatcher("/Admin/users.jsp");
     		resq.forward(request, response);
     		
     	}
@@ -39,6 +40,8 @@ public class UserController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 		
+		
+		// Check to see request is to add the user and get parameters from form submitted
 		if (request.getQueryString().equalsIgnoreCase("adduser")) {	
 
 		String firstname = request.getParameter("userfirstname");
@@ -48,28 +51,40 @@ public class UserController extends HttpServlet {
 		String gender = request.getParameter("usergender");
 		String password = request.getParameter("userpassword");
 		
+		// Create User Object
 		UserModel user = new UserModel(firstname, lastname, email, phonenumber, gender, password);
+		
+		// Call the method to add user to the database
 		UserOperation.AddNewUser(user);
 
-		response.sendRedirect("UserController?viewUsers");
+		// redirect the new user to the home page
+		response.sendRedirect("/ArtofTravel");
 		} 
 		
 		
-		if (request.getQueryString().equalsIgnoreCase("login")) {	
+		if (request.getQueryString().equalsIgnoreCase("loginrequest")) {	
 			
 			String username = request.getParameter("username").toLowerCase();
 			String password = request.getParameter("password");
 			
-			Boolean auth = UserOperation.AuthenticateUser(username, password);
+			ArrayList<UserModel> auth = UserOperation.AuthenticateUser(username, password);
 			
-			if (auth.equals(true)) {
-				
-				HttpSession session = request.getSession();
-				session.setAttribute("Username", username);
+
+			request.setAttribute("viewUsers", auth);		
+    		RequestDispatcher resq = request.getRequestDispatcher("LoggedIn.jsp");
+    		resq.forward(request, response);
+    		
 			
-				response.sendRedirect("logintest.jsp");
-			} else response.sendRedirect("Login.jsp");
 			
+			/*
+			 * if (auth.equals(true)) {
+			 * 
+			 * HttpSession session = request.getSession(); session.setAttribute("Username",
+			 * username);
+			 * 
+			 * response.sendRedirect("logintest.jsp"); } else
+			 * response.sendRedirect("Login.jsp");
+			 */
 			
 		}
 		

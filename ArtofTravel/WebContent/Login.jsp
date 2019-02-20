@@ -9,18 +9,18 @@
 	<h4 class="card-title mt-3 text-center">Log In</h4>
 	
 	
-	<form action="UserController?login" method="post">
+	<form action="UserController?loginrequest" method="post">
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input  class="form-control" placeholder="Email Address" name="username" type="text">
+        <input  type="email" class="form-control" placeholder="Email Address" name="username" type="text" required>
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="Password" name="password" type="password">
+        <input class="form-control" placeholder="Password" name="password" type="password" required>
     </div> <!-- form-group// -->
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Sign In </button>
