@@ -3,6 +3,8 @@
  <div class="container">
  
 
+<a class="btn btn-outline-primary mb-2" href="/ArtofTravel/Admin/addtour.jsp" >Add Tour</a>
+
 <table class="table table-hover">
 <thead class="thead-light">
 <tr>

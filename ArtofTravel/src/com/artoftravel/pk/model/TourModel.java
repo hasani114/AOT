@@ -11,9 +11,12 @@ public class TourModel {
 	private String tourprice;
 	private String tourduration;
 	private String tourdescription;
+	private int availableSeats;
+	
+	
 
-	
-	
+
+
 	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
 			String tourduration, String tourdescription) {
 		super();
@@ -97,7 +100,14 @@ public class TourModel {
 		this.tourdescription = tourdescription;
 	}
 
+	public int getAvailableSeats() {
+		return availableSeats;
+	}
 
+
+	public void setAvailableSeats(int availableSeats) {
+		this.availableSeats = availableSeats;
+	}
 
 	
 	

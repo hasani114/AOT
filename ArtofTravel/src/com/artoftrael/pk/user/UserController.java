@@ -62,15 +62,24 @@ public class UserController extends HttpServlet {
 		} 
 		
 		
+		
+		
+		//Check to see request is to log in the user and get parameters from form submitted
 		if (request.getQueryString().equalsIgnoreCase("loginrequest")) {	
 			
 			String username = request.getParameter("username").toLowerCase();
 			String password = request.getParameter("password");
 			
-			ArrayList<UserModel> auth = UserOperation.AuthenticateUser(username, password);
+			boolean isValid = UserOperation.AuthenticateUser(username, password);
+	
+			if (isValid == true) {
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("User", true);
+				session.setAttribute("Name", username);
+				}
 			
-
-			request.setAttribute("viewUsers", auth);		
+			request.setAttribute("ValidUser", isValid);		
     		RequestDispatcher resq = request.getRequestDispatcher("LoggedIn.jsp");
     		resq.forward(request, response);
     		

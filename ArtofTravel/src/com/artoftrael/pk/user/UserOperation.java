@@ -76,11 +76,12 @@ public class UserOperation {
 
 	}
 	
-	public static ArrayList<UserModel> AuthenticateUser(String username, String password) {
+	public static boolean AuthenticateUser(String username, String password) {
 		
-		//create arraylist to hold data from result
-		ArrayList<UserModel> testlist = new ArrayList<UserModel>();
-
+			
+		boolean valid = false;
+		
+		
 		// Connect to database
 		
 		try {
@@ -92,17 +93,22 @@ public class UserOperation {
 			
 		// select username column
 			
-			String query = "select * FROM users where user_email = ?";
+			String query = "select user_email, user_password FROM users where user_email = ?";
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, username);
 
 			ResultSet rs = stmt.executeQuery();
 
 		// read through result to see if it equals username
-			while (rs.next()) {
-				testlist.add(new UserModel(rs.getInt("ID"), rs.getString("user_first_name"),
-						rs.getString("user_last_name"), rs.getString("user_email"), rs.getString("user_phone"),
-						rs.getString("user_gender"), rs.getString("user_password")));
+			if (rs.next()) {
+					String dbpassword = rs.getString("user_password");
+					
+					if (dbpassword.contentEquals(password)) {
+						
+						valid = true;
+						
+					} else valid = false;
+					
 			}
 
 			stmt.close();
@@ -113,18 +119,8 @@ public class UserOperation {
 			e.printStackTrace();
 
 		}
-		// if false return false
-		// if true, write another query to get password of the username
-		// if password is valid, return true
-		
-		return testlist;
-		
-		
-//		
-//		if (username.equals("hasan")) {
-//			return true;
-//		} else return false;	
-		
+	
+		return valid;
 	}
 	
 	
