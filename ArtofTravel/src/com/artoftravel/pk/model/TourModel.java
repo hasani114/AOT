@@ -29,6 +29,12 @@ public class TourModel {
 		this.tourdescription = tourdescription;
 	
 	}
+	
+	public TourModel() {
+		super();
+		
+	
+	}
 
 
 	public String getTourname() {

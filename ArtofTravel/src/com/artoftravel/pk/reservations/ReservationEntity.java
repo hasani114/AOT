@@ -20,6 +20,17 @@ public class ReservationEntity {
 		this.reservationpaymentstatus = reservationpaymentstatus;
 		this.numberofattendees = numberofattendees;
 	}
+	
+	public ReservationEntity(int tourID, int userID, int numberofattendees) {
+		super();
+		this.tourID = tourID;
+		this.userID = userID;
+		this.reservationstatus = "tentative";
+		this.reservationpaymentstatus = 0;
+		this.numberofattendees = numberofattendees;
+	}
+	
+	
 	public int getReservationID() {
 		return reservationID;
 	}
