@@ -14,6 +14,7 @@
 <th scope="col">Price</th>
 <th scope="col">Duration (Days)</th>
 <th scope="col">Description</th>
+<th scope="col">Reserve</th>
 
 </tr>
 </thead>
@@ -39,6 +40,7 @@ try{
    <td><%= rs.getInt(6) %></td>
    <td><%= rs.getInt(7) %></td>
    <td><%= rs.getString(8) %></td>
+   <td><a href="/ArtofTravel/reserve.jsp?tourid=2&userid=36">Reserve</a></td>
 
     <%
 			}
