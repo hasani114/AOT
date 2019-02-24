@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/UserController")
+@WebServlet({"/UserController", "/Admin/UserController"})
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -56,6 +56,15 @@ public class UserController extends HttpServlet {
 		
 		// Call the method to add user to the database
 		UserOperation.AddNewUser(user);
+		
+		//Get UserInfo
+		user = UserOperation.getUserInfo(email);
+		HttpSession session = request.getSession();
+		session.setAttribute("User", true);
+		session.setAttribute("Name", user.getUserFirstName());
+		session.setAttribute("UserID", user.getUserId());
+	
+
 
 		// redirect the new user to the home page
 		response.sendRedirect("/ArtofTravel");
@@ -71,12 +80,15 @@ public class UserController extends HttpServlet {
 			String password = request.getParameter("password");
 			
 			boolean isValid = UserOperation.AuthenticateUser(username, password);
-	
+			
 			if (isValid == true) {
+				
+				UserModel user = UserOperation.getUserInfo(username);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("User", true);
-				session.setAttribute("Name", username);
+				session.setAttribute("Name", user.getUserFirstName());
+				session.setAttribute("UserID", user.getUserId());
 				}
 			
 			request.setAttribute("ValidUser", isValid);		

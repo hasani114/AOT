@@ -1,4 +1,4 @@
-<%@ include file = "/templates/header2.jsp" %>
+<%@ include file = "/templates/header.jsp" %>
 <%@ page import="java.util.*" %>
 , <%@ page import="com.artoftrael.pk.user.*" %>
 

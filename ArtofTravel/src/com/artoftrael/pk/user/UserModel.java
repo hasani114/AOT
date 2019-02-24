@@ -9,6 +9,7 @@ public class UserModel {
 	private String UserPhone;
 	private String UserGender;
 	private String UserPassword;
+	private String UserRole;
 	
 	
 	
@@ -23,6 +24,7 @@ public class UserModel {
 		UserGender = userGender;
 		UserPhone = userPhone;
 		UserPassword = userPassword;
+		UserRole = "user";
 	}
 
 
@@ -35,10 +37,33 @@ public class UserModel {
 		UserGender = userGender;
 		UserPhone = userPhone;
 		UserPassword = userPassword;
+		UserRole = "user";
+	}
+	
+	public UserModel() {
+		super();
+		UserId = this.UserId;
+		UserEmail = this.UserEmail;
+		UserFirstName = this.UserFirstName;
+		UserLastName = this.UserLastName;
+		UserGender = this.UserGender;
+		UserPhone = this.UserPhone;
+		UserPassword = this.UserPassword;
+		UserRole = this.UserRole;
 	}
 
 	
 	
+
+	public String getUserRole() {
+		return UserRole;
+	}
+
+
+	public void setUserRole(String userRole) {
+		UserRole = userRole;
+	}
+
 
 	public int getUserId() {
 		return UserId;

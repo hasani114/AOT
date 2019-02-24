@@ -28,38 +28,40 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/index.jsp">Home</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">Home</a>
       </li>
     
       <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/viewtours.jsp">Upcoming Tours</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/viewtours.jsp">Upcoming Tours</a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/reserve.jsp">Reserve</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/signup.jsp">Sign Up</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/Login.jsp">Sign In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/contact-us.jsp">Contact Us</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/contact-us.jsp">Contact Us</a>
       </li>
       
       <li class="nav-item dropdown">
+    <% if (session.getAttribute("UserID") != null ) {
+    %>
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    	Admin
+    	${Name} ${UserID}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/ArtofTravel/Admin/addtour.jsp">Add Tour</a>
-          <a class="dropdown-item" href="/ArtofTravel/Admin/viewtours.jsp">View Tours</a>
-          <a class="dropdown-item" href="/ArtofTravel/UserController?viewUsers">Registered Users</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/addtour.jsp">Add Tour</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/viewtours.jsp">View Tours</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/UserController?viewUsers">Registered Users</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/reservations.jsp">Reservations</a>
           
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="logout.jsp">Log Out</a>
+          <a class="dropdown-item" href= "${pageContext.request.contextPath}/logout.jsp">Log Out</a>
         </div>
       </li>
+     <% } else {%>
       <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/contact-us.jsp"> ${Name}</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/Login.jsp">Sign In</a>
       </li>
+      <% } %>
      
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -70,33 +72,5 @@
 </nav>
 
   <body>
- <div class="bd-example" >
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="https://imgcld.yatra.com/ytimages/image/upload/t_ann_trip_gallery_main/v1550059818/AdvNation/ANN_TRP751/trang_an_landscape_complex_unesco_lD2DKU.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="https://imgcld.yatra.com/ytimages/image/upload/t_ann_trip_gallery_main/v1517481702/AdvNation/ANN_TRP237/Trek-Everest-Base-Camp_1439798460_PvZBIN.jpg" class="d-block w-100" alt="...">
-        
-      </div>
-      <div class="carousel-item">
-        <img src="https://imgcld.yatra.com/ytimages/image/upload/t_ann_trip_gallery_main/v1517482596/AdvNation/ANN_TRP462/Pin_Parvati_Trek_(1)_1437478332_MaPToN.jpg" class="d-block w-100" alt="...">
-        
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
+<div class=container  style="padding-top: 100px"></div>
+

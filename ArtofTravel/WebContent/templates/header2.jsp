@@ -34,9 +34,7 @@
       <li class="nav-item">
         <a class="nav-link" href="/ArtofTravel/viewtours.jsp">Upcoming Tours</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/ArtofTravel/signup.jsp">Sign Up</a>
-      </li>
+    
       <li class="nav-item">
         <a class="nav-link" href="/ArtofTravel/Login.jsp">Sign In
         	</a>

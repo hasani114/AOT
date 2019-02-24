@@ -25,6 +25,7 @@
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Sign In </button>
     </div> <!-- form-group// --> 
+    <a href="/ArtofTravel/signup.jsp">Sign Up</a>
         </form>
     </article>
     </div>

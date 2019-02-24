@@ -24,13 +24,19 @@ public class UserOperation {
 					"2001Space");
 			// here sonoo is database name, root is username and password
 			PreparedStatement stmt = con.prepareStatement(
-					"INSERT INTO users (user_first_name, user_last_name, user_email, user_phone, user_gender, user_password) VALUES (?, ?, ?, ?, ?, ?)");
+					"INSERT INTO users (user_first_name, user_last_name, user_email, user_phone, user_gender, user_password, user_role) VALUES (?, ?, ?, ?, ?, ?, ?)");
 			stmt.setString(1, user.getUserFirstName());
 			stmt.setString(2, user.getUserLastName());
 			stmt.setString(3, user.getUserEmail());
 			stmt.setString(4, user.getUserPhone());
 			stmt.setString(5, user.getUserGender());
 			stmt.setString(6, user.getUserPassword());
+			stmt.setString(7, "user");
+
+			
+		
+
+			
 
 			stmt.execute();
 
@@ -123,6 +129,56 @@ public class UserOperation {
 		return valid;
 	}
 	
+	public static UserModel getUserInfo(String username) {
+		
+		UserModel user = new UserModel();
+		
+		// Connect to database
+		
+				try {
+
+					Class.forName("com.mysql.cj.jdbc.Driver");
+
+					Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+							"2001Space");
+					
+					// select 
+					
+					String query = "select * FROM users where user_email = ?";
+					PreparedStatement stmt = con.prepareStatement(query);
+					stmt.setString(1, username);
+
+					ResultSet rs = stmt.executeQuery();
+					
+					
+					while (rs.next()) {
+					int userID = rs.getInt("ID");
+					String firstname = rs.getString("user_first_name");
+					String lastname = rs.getString("user_last_name");
+					String email = rs.getString("user_email");
+					String phone = rs.getString("user_phone");
+					String gender = rs.getString("user_gender");
+					String password = rs.getString("user_password");
+					
+					UserModel userinfo = new UserModel(userID, firstname, lastname, email, phone, gender, password);
+					
+					user = userinfo;
+
+					}
+					
+					stmt.close();
+					rs.close();
+					con.close();
+
+				} catch (Exception e) {
+					e.printStackTrace();
+
+				}
+
+				return user;
+
+	}
+				
+	}
 	
 	
-}
