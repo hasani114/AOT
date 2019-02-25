@@ -10,6 +10,7 @@ public class ReservationEntity {
 	private int numberofattendees;
 	
 	
+	
 	public ReservationEntity(int reservationID, int tourID, int userID, String reservationstatus,
 			int reservationpaymentstatus, int numberofattendees) {
 		super();

@@ -2,11 +2,15 @@ package com.artoftravel.pk.reservations;
 import com.artoftravel.pk.model.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/ReservationController")
@@ -54,7 +58,14 @@ public class ReservationController extends HttpServlet {
 		ReservationModel reserve = new ReservationModel();
 		reserve.createReservation(reservation);
 		
+		//Get all reservations from the db
 		
+		ArrayList<ReservationEntity> reservations = reserve.getAllReservations();
+		
+		request.setAttribute("Reservations", reservations);
+		
+		RequestDispatcher rs = request.getRequestDispatcher("/Admin/reservations2.jsp");
+		rs.forward(request, response);
 		
 		
 		

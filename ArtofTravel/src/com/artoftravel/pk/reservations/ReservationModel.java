@@ -3,6 +3,10 @@ package com.artoftravel.pk.reservations;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.sql.Statement;
+
 
 public class ReservationModel {
 	
@@ -34,14 +38,54 @@ public class ReservationModel {
 
 			
 			stmt.execute();
-
+			
+			stmt.close();
+			con.close();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 
 		} 
 		
 		}
+	
+	
+	public ArrayList<ReservationEntity> getAllReservations() {
 		
+		ArrayList<ReservationEntity> reservations = new ArrayList<ReservationEntity>();
+		
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+		
+		String query = "Select * from reservations;";
+		Statement stmt = con.createStatement();
+		ResultSet rs = stmt.executeQuery(query);
+		
+		while (rs.next()) {
+			
+			reservations.add(new ReservationEntity(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6)));
+			
+		}
+		
+		stmt.close();
+		rs.close();
+		con.close();
+
+	} catch (Exception e) {
+		e.printStackTrace();
+
+	}
+		
+		
+		
+		return reservations;
+		
+	}
+ 		
 		
 	}
 	
