@@ -39,8 +39,6 @@ public class ReservationModel {
 			
 			stmt.execute();
 			
-			stmt.close();
-			con.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +65,7 @@ public class ReservationModel {
 		
 		while (rs.next()) {
 			
-			reservations.add(new ReservationEntity(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6)));
+			reservations.add(new ReservationEntity(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getInt(5), rs.getInt(6), rs.getDate(7)));
 			
 		}
 		

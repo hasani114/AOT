@@ -1,5 +1,7 @@
 package com.artoftravel.pk.reservations;
 
+import java.util.Date;
+
 public class ReservationEntity {
 	
 	private int reservationID;
@@ -8,11 +10,19 @@ public class ReservationEntity {
 	private String reservationstatus;
 	private int reservationpaymentstatus;
 	private int numberofattendees;
+	private Date reservationcreationdate;
 	
 	
-	
+	public Date getReservationcreationdate() {
+		return reservationcreationdate;
+	}
+
+	public void setReservationcreationdate(Date reservationcreationdate) {
+		this.reservationcreationdate = reservationcreationdate;
+	}
+
 	public ReservationEntity(int reservationID, int tourID, int userID, String reservationstatus,
-			int reservationpaymentstatus, int numberofattendees) {
+			int reservationpaymentstatus, int numberofattendees, Date reservationcreationdate) {
 		super();
 		this.reservationID = reservationID;
 		this.tourID = tourID;
@@ -20,6 +30,7 @@ public class ReservationEntity {
 		this.reservationstatus = reservationstatus;
 		this.reservationpaymentstatus = reservationpaymentstatus;
 		this.numberofattendees = numberofattendees;
+		this.reservationcreationdate = reservationcreationdate;
 	}
 	
 	public ReservationEntity(int tourID, int userID, int numberofattendees) {
@@ -29,6 +40,8 @@ public class ReservationEntity {
 		this.reservationstatus = "tentative";
 		this.reservationpaymentstatus = 0;
 		this.numberofattendees = numberofattendees;
+		this.reservationcreationdate = null;
+
 	}
 	
 	

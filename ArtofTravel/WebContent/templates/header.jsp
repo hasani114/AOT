@@ -52,6 +52,8 @@
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/viewtours.jsp">View Tours</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/UserController?viewUsers">Registered Users</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/reservations.jsp">Reservations</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/ReservationController?viewAll">Reservations JSTL</a>
+          
           
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href= "${pageContext.request.contextPath}/logout.jsp">Log Out</a>

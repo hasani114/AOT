@@ -27,7 +27,21 @@ public class ReservationController extends HttpServlet {
     
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+	if (request.getQueryString().contentEquals("viewAll")) {
+			
+			//Get all reservations from the db
+			ReservationModel reserve = new ReservationModel();
+			
+			ArrayList<ReservationEntity> reservations = reserve.getAllReservations();
+			
+			request.setAttribute("Reservations", reservations);
+			
+			RequestDispatcher rs = request.getRequestDispatcher("/Admin/reservations2.jsp");
+			rs.forward(request, response);
+		}
+		
+	
 	}
 
 	
@@ -35,7 +49,6 @@ public class ReservationController extends HttpServlet {
 	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
 		
 		//Get reservation details from the reservation form
 		int tourID = Integer.parseInt(request.getParameter("tourid"));
@@ -50,28 +63,16 @@ public class ReservationController extends HttpServlet {
 		ReservationEntity reservation = new ReservationEntity(tourID, userID, numberofattendees);
 		
 		//Create Tour Object --- check to see if number of attendees is not greater than available seats.
-		TourModel tour = new TourModel();
-		tour.getAvailableSeats();
+	
 		
 		
 		//Call Create Reservation Method
 		ReservationModel reserve = new ReservationModel();
 		reserve.createReservation(reservation);
 		
-		//Get all reservations from the db
+		// Redirect
 		
-		ArrayList<ReservationEntity> reservations = reserve.getAllReservations();
-		
-		request.setAttribute("Reservations", reservations);
-		
-		RequestDispatcher rs = request.getRequestDispatcher("/Admin/reservations2.jsp");
-		rs.forward(request, response);
-		
-		
-		
-		
-		
-		
+		response.sendRedirect("ReservationController?viewAll");
 		
 		
 	}

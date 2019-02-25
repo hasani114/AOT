@@ -1,4 +1,6 @@
  <%@ include file = "/templates/header.jsp" %>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ 
  
  <div class="container">
  
@@ -13,21 +15,26 @@
 <th scope="col">Payment Status</th>
 <th scope="col">Party Size</th>
 <th scope="col">Created On</th>
-
-
 </tr>
 </thead>
 <tbody>
-
-	<tr><td></td>
-    <td></td>
-   <td></td>
-   <td></td>
-    <td></td>
-   <td></td>
-      <td></td>
    
+<c:forEach var="reservation" items="${Reservations}">
 
+<tr>
+<td>${reservation.reservationID}</td>
+<td>${reservation.tourID}</td>
+<td>${reservation.userID}</td>
+<td>${reservation.reservationstatus}</td>
+<td>${reservation.reservationpaymentstatus}</td>
+<td>${reservation.numberofattendees}</td>
+<td>${reservation.reservationcreationdate}</td>
+
+
+
+</tr>
+
+</c:forEach>
 
 
 </tbody>
