@@ -40,7 +40,7 @@ try{
    <td><%= rs.getInt(6) %></td>
    <td><%= rs.getInt(7) %></td>
    <td><%= rs.getString(8) %></td>
-   <td><a href="/ArtofTravel/reserve.jsp?tourid=<%= rs.getInt(1) %>&userid=${UserID}">Reserve</a></td>
+   <td><a href="/ArtofTravel/reserve.jsp?tourid=<%= rs.getInt(1) %>&userid=${sessionScope.UserID}">Reserve</a></td>
 
     <%
 			}

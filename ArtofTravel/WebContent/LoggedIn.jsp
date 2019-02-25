@@ -3,10 +3,9 @@
 , <%@ page import="com.artoftrael.pk.user.*" %>
 
 
-<% String isValid = request.getParameter("ValidUser");
-		
-%>
 <div class=container>
+
+
 
 the user is valid = ${ValidUser}
 		

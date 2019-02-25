@@ -15,7 +15,7 @@ public class ReservationModel {
 		String reservationstatus = reservation.getReservationstatus();
 		int paymentstatus = reservation.getReservationpaymentstatus();
 		
-		if (numberofattendees < 15) {
+		
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,4 +48,4 @@ public class ReservationModel {
 	
 	
 
-}
+

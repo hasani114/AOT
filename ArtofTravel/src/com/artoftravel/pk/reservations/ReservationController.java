@@ -38,12 +38,14 @@ public class ReservationController extends HttpServlet {
 		int userID = Integer.parseInt(request.getParameter("userid"));
 		int numberofattendees = Integer.parseInt(request.getParameter("numberofattendees"));
 		
+		System.out.println(tourID);
+		System.out.println(userID);
 
 		
 		//Create Reservation Object using submitted data
 		ReservationEntity reservation = new ReservationEntity(tourID, userID, numberofattendees);
 		
-		//Create Tour Object 
+		//Create Tour Object --- check to see if number of attendees is not greater than available seats.
 		TourModel tour = new TourModel();
 		tour.getAvailableSeats();
 		
