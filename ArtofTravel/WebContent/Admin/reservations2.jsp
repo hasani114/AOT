@@ -15,6 +15,7 @@
 <th scope="col">Payment Status</th>
 <th scope="col">Party Size</th>
 <th scope="col">Created On</th>
+<th scope="col">Action</th>
 </tr>
 </thead>
 <tbody>
@@ -29,6 +30,13 @@
 <td>${reservation.reservationpaymentstatus}</td>
 <td>${reservation.numberofattendees}</td>
 <td>${reservation.reservationcreationdate}</td>
+
+
+<form action="ReservationController">
+<td><input type=hidden name="editReservation" value="${reservation.reservationID}">
+<input type=submit n value="edit"></td>
+
+</form>
 
 
 

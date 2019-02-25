@@ -44,6 +44,17 @@ public class ReservationEntity {
 
 	}
 	
+	public ReservationEntity() {
+		super();
+		this.tourID = tourID;
+		this.userID = userID;
+		this.reservationstatus = "tentative";
+		this.reservationpaymentstatus = 0;
+		this.numberofattendees = numberofattendees;
+		this.reservationcreationdate = null;
+
+	}
+	
 	
 	public int getReservationID() {
 		return reservationID;
