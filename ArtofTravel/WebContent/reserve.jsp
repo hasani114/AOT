@@ -11,7 +11,7 @@
 	
 	<form action="ReservationController" method="post">
 	<div class="form-group input-group">
-		
+		<input type=hidden name="action" value="createreservation">
         <input   class="form-control" placeholder="Tour ID" name="tourid" type="hidden" value="<%=request.getParameter("tourid")%>" required>
     </div> <!-- form-group// -->
     <div class="form-group input-group">

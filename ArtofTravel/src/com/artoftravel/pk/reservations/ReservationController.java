@@ -50,6 +50,12 @@ public class ReservationController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		String formname = request.getParameter("action");
+		System.out.print(formname);
+		
+		if (formname.contentEquals("createreservation")) {
+		
 		//Get reservation details from the reservation form
 		int tourID = Integer.parseInt(request.getParameter("tourid"));
 		int userID = Integer.parseInt(request.getParameter("userid"));
@@ -74,7 +80,22 @@ public class ReservationController extends HttpServlet {
 		
 		response.sendRedirect("ReservationController?viewAll");
 		
-		
+		} else if (formname.contentEquals("search")) {
+			
+			//get search criterion - reservation ID
+			
+			
+			//Call method in reservation model using reservation ID
+			
+			//Set Attribute in Request
+			
+			//Redirect to Reservations Page
+			
+			
+			
+			
+			
+		}
 	}
 
 }
