@@ -3,6 +3,7 @@ import com.artoftravel.pk.model.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,9 +29,10 @@ public class ReservationController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		//Get all reservations from the db
+
 	if (request.getQueryString().contentEquals("viewAll")) {
 			
-			//Get all reservations from the db
 			ReservationModel reserve = new ReservationModel();
 			
 			ArrayList<ReservationEntity> reservations = reserve.getAllReservations();
@@ -40,7 +42,30 @@ public class ReservationController extends HttpServlet {
 			RequestDispatcher rs = request.getRequestDispatcher("/Admin/reservations2.jsp");
 			rs.forward(request, response);
 		}
+	
+	
+	//Edit Reservation ID Receive and Send Data to Edit Form
+	
 		
+		  String edit = request.getParameter("editReservation"); 
+		  
+		  if (edit != null) {
+			  
+		  int reservationID = Integer.parseInt(request.getParameter("editReservation"));
+
+		  
+		  ReservationModel reserve = new ReservationModel(); 
+		  ReservationEntity reservation = reserve.getReservationByID(reservationID);
+		  request.setAttribute("Reservation", reservation);
+		  
+		  RequestDispatcher rs =
+		  request.getRequestDispatcher("/Admin/editreservation.jsp"); rs.forward(request,
+		  response);
+ }
+		  
+		  
+		  
+		 
 	
 	}
 
@@ -89,13 +114,28 @@ public class ReservationController extends HttpServlet {
 			
 			//Set Attribute in Request
 			
-			//Redirect to Reservations Page
-			
-			
-			
-			
-			
+			//Redirect to Reservations Page		
 		}
+		
+		String update = request.getParameter("action");
+		  
+		  if (update.equals("updatereservation")) {
+			  
+			
+			  int reservationID = Integer.parseInt(request.getParameter("reservationID"));
+			  			 
+			  String reservationstatus = request.getParameter("reservationstatus"); 
+			  
+			  int reservationpaymentstatus = Integer.parseInt(request.getParameter("reservationpaymentstatus")); 
+			  
+			  int numberofattendees = Integer.parseInt(request.getParameter("numberofattendees"));
+			 
+		  ReservationModel updates = new ReservationModel();
+		  updates.updateReservation(reservationID, reservationstatus, reservationpaymentstatus, numberofattendees);
+		  
+		  response.sendRedirect("ReservationController?viewAll");
+
+		  }
 	}
 
 }

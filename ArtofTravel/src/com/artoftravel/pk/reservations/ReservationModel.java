@@ -124,6 +124,35 @@ public class ReservationModel {
 		
 	}
 	
+	public void updateReservation(int reservationID, String reservationstatus, int reservationpaymentstatus, int numberofattendees) {
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			
+			String query = "Update reservations SET reservation_Status = ?, reservation_payment_status=?, number_of_attendees = ? where ID = ?";
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, reservationstatus);
+			stmt.setInt(2, reservationpaymentstatus);
+			stmt.setInt(3, numberofattendees);
+			stmt.setInt(4, reservationID);
+			
+			stmt.executeUpdate();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+
+
+		
+		
+		
+		
+	}
+	
 	
 }
 
