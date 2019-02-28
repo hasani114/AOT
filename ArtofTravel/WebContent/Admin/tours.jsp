@@ -94,8 +94,8 @@
 	 </c:forEach>
 	
 	
-<td><a href="/ArtofTravel/reserve.jsp?tourid=${tourlist.tourID}&userid=${sessionScope.UserID}">Edit</a></td>
-
+<%-- <td><a href="/ArtofTravel/reserve.jsp?tourid=${tourlist.tourID}&userid=${sessionScope.UserID}">Edit</a></td>
+ --%>
  
  </tr>
  </c:forEach>

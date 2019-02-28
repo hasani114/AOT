@@ -12,7 +12,7 @@ import java.sql.SQLException;
 
 
 
-public class UserOperation {
+public class Userdao {
 
 	
 	public static void AddNewUser(UserModel user) {

@@ -16,7 +16,8 @@ import javax.servlet.http.*;
 /**
  * Servlet Filter implementation class AuthUser
  */
-@WebFilter(filterName="/AuthUser", urlPatterns="/Admin/*")
+@WebFilter(filterName="/AuthUser", urlPatterns= { "/Admin/*", "/reserve.jsp"})
+
 public class AuthUser implements Filter {
 
 

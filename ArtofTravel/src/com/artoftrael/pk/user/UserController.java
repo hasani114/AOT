@@ -26,7 +26,7 @@ public class UserController extends HttpServlet {
 
     	if (request.getQueryString().contentEquals("viewUsers")) {
     		
-    		UserOperation ope = new UserOperation();
+    		Userdao ope = new Userdao();
     		request.setAttribute("viewUsers", ope.viewUsers());		
     		RequestDispatcher resq = request.getRequestDispatcher("/Admin/users.jsp");
     		resq.forward(request, response);
@@ -55,10 +55,10 @@ public class UserController extends HttpServlet {
 		UserModel user = new UserModel(firstname, lastname, email, phonenumber, gender, password);
 		
 		// Call the method to add user to the database
-		UserOperation.AddNewUser(user);
+		Userdao.AddNewUser(user);
 		
 		//Get UserInfo
-		user = UserOperation.getUserInfo(email);
+		user = Userdao.getUserInfo(email);
 		HttpSession session = request.getSession();
 		session.setAttribute("User", true);
 		session.setAttribute("Name", user.getUserFirstName());
@@ -79,20 +79,23 @@ public class UserController extends HttpServlet {
 			String username = request.getParameter("username").toLowerCase();
 			String password = request.getParameter("password");
 			
-			boolean isValid = UserOperation.AuthenticateUser(username, password);
+			boolean isValid = Userdao.AuthenticateUser(username, password);
 			
 			if (isValid == true) {
 				
-				UserModel user = UserOperation.getUserInfo(username);
+				UserModel user = Userdao.getUserInfo(username);
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("User", true);
-				session.setAttribute("Name", user.getUserFirstName());
+				session.setAttribute("Name", user.getUserFirstName() + " " + user.getUserLastName());
 				session.setAttribute("UserID", user.getUserId());
+				session.setAttribute("Email", user.getUserEmail());
+				session.setAttribute("Phone", user.getUserPhone());
+
 				}
 			
 			request.setAttribute("ValidUser", isValid);		
-    		RequestDispatcher resq = request.getRequestDispatcher("LoggedIn.jsp");
+    		RequestDispatcher resq = request.getRequestDispatcher("/Users/profile.jsp");
     		resq.forward(request, response);
     		
 			

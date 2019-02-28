@@ -1,9 +1,9 @@
-package com.artoftravel.pk.model;
+package com.artoftravel.pk.tour;
 
 import java.util.ArrayList;
 import java.util.Date;
-import com.artoftravel.pk.reservations.ReservationEntity;
 import com.artoftravel.pk.reservations.ReservationModel;
+import com.artoftravel.pk.reservations.Reservationdao;
 
 
 
@@ -24,20 +24,20 @@ public class TourModel {
 	
 
 
-	private ArrayList<ReservationEntity> reservations;
+	private ArrayList<ReservationModel> reservations;
 	
 	
 
 
 
-	public ArrayList<ReservationEntity> getReservations() {
+	public ArrayList<ReservationModel> getReservations() {
 		
-		ReservationModel res = new ReservationModel();
-		ArrayList<ReservationEntity> reservations = res.getReservationByTourID(this.tourID);
+		Reservationdao res = new Reservationdao();
+		ArrayList<ReservationModel> reservations = res.getReservationByTourID(this.tourID);
 		return reservations;
 	}
 
-	public void setReservations(ArrayList<ReservationEntity> reservations) {
+	public void setReservations(ArrayList<ReservationModel> reservations) {
 		this.reservations = reservations;
 	}
 

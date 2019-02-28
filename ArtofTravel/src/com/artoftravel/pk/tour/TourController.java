@@ -1,4 +1,4 @@
-package com.artoftravel.pk;
+package com.artoftravel.pk.tour;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,8 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.artoftravel.pk.model.*;
-import com.artoftravel.pk.reservations.ReservationEntity;
+import com.artoftravel.pk.reservations.ReservationModel;
+import com.artoftravel.pk.tour.*;
 
 
 @WebServlet("/TourController")
@@ -37,7 +37,7 @@ public class TourController extends HttpServlet {
 		if (request.getQueryString().contains("delete")) {
 			String deletetour = request.getParameter("delete");
 			
-			Tourdoa database = new Tourdoa();
+			Tourdao database = new Tourdao();
 			database.deleteTour(deletetour);
 			
 			
@@ -50,7 +50,7 @@ public class TourController extends HttpServlet {
 		
 		if (request.getQueryString().contains("viewAll")) {
 			
-			Tourdoa database = new Tourdoa();
+			Tourdao database = new Tourdao();
 			ArrayList<TourModel> tourlist = database.viewAllTours();
 			
 			Iterator it = tourlist.iterator();
@@ -59,7 +59,7 @@ public class TourController extends HttpServlet {
 				
 			
 				TourModel tour = (TourModel) it.next();
-				ArrayList<ReservationEntity> reservations = tour.getReservations();
+				ArrayList<ReservationModel> reservations = tour.getReservations();
 				System.out.println("Tour Name: " + tour.getTourname());
 				System.out.println("Tour ID: " + tour.getTourID());
 					
@@ -67,7 +67,7 @@ public class TourController extends HttpServlet {
 				
 				for (int i=0; i<reservations.size(); i++) {
 					
-						ReservationEntity res = (ReservationEntity) resit.next();
+						ReservationModel res = (ReservationModel) resit.next();
 						System.out.println("Reservation ID : " + res.getReservationID() + "Reservation Attendees : " + res.getNumberofattendees() + "Reservation Status : " + res.getReservationstatus() );
 				
 						i++;
@@ -89,7 +89,7 @@ public class TourController extends HttpServlet {
 		
 			if (request.getQueryString().contains("admintours")) {
 			
-			Tourdoa database = new Tourdoa();
+			Tourdao database = new Tourdao();
 			ArrayList<TourModel> tourlist = database.viewAllTours();
 			
 			
@@ -165,7 +165,7 @@ public class TourController extends HttpServlet {
         	String price = request.getParameter("tourprice");
 
         	
-        	Tourdoa database = new Tourdoa();
+        	Tourdao database = new Tourdao();
 			ArrayList<TourModel> tourlist = database.searchTours(duration, price, tourname);
 			
 			request.setAttribute("tourlist", tourlist);
@@ -222,7 +222,7 @@ public class TourController extends HttpServlet {
 		// Create instance of database helper class and call its add new tour method to update the database with the new entry
 		
 		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription);		
-		Tourdoa dbUpdate = new Tourdoa();
+		Tourdao dbUpdate = new Tourdao();
 		dbUpdate.addNewTour(tour);
 		
 		

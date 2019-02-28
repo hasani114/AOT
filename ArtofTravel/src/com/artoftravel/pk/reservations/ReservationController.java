@@ -1,6 +1,4 @@
 package com.artoftravel.pk.reservations;
-import com.artoftravel.pk.model.*;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -12,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.artoftravel.pk.tour.*;
 
 
 @WebServlet("/ReservationController")
@@ -33,9 +33,9 @@ public class ReservationController extends HttpServlet {
 
 	if (request.getQueryString().contentEquals("viewAll")) {
 			
-			ReservationModel reserve = new ReservationModel();
+			Reservationdao reserve = new Reservationdao();
 			
-			ArrayList<ReservationEntity> reservations = reserve.getAllReservations();
+			ArrayList<ReservationModel> reservations = reserve.getAllReservations();
 			
 			request.setAttribute("Reservations", reservations);
 			
@@ -54,8 +54,8 @@ public class ReservationController extends HttpServlet {
 		  int reservationID = Integer.parseInt(request.getParameter("editReservation"));
 
 		  
-		  ReservationModel reserve = new ReservationModel(); 
-		  ReservationEntity reservation = reserve.getReservationByID(reservationID);
+		  Reservationdao reserve = new Reservationdao(); 
+		  ReservationModel reservation = reserve.getReservationByID(reservationID);
 		  request.setAttribute("Reservation", reservation);
 		  
 		  RequestDispatcher rs =
@@ -91,14 +91,14 @@ public class ReservationController extends HttpServlet {
 
 		
 		//Create Reservation Object using submitted data
-		ReservationEntity reservation = new ReservationEntity(tourID, userID, numberofattendees);
+		ReservationModel reservation = new ReservationModel(tourID, userID, numberofattendees);
 		
 		//Create Tour Object --- check to see if number of attendees is not greater than available seats.
 	
 		
 		
 		//Call Create Reservation Method
-		ReservationModel reserve = new ReservationModel();
+		Reservationdao reserve = new Reservationdao();
 		reserve.createReservation(reservation);
 		
 		// Redirect
@@ -130,7 +130,7 @@ public class ReservationController extends HttpServlet {
 			  
 			  int numberofattendees = Integer.parseInt(request.getParameter("numberofattendees"));
 			 
-		  ReservationModel updates = new ReservationModel();
+		  Reservationdao updates = new Reservationdao();
 		  updates.updateReservation(reservationID, reservationstatus, reservationpaymentstatus, numberofattendees);
 		  
 		  response.sendRedirect("ReservationController?viewAll");

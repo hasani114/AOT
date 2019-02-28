@@ -48,6 +48,12 @@
     	${Name} ${UserID}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Users/profile.jsp">My Profile</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Users/reservations.jsp">My Reservations</a>
+        
+        
+                  <div class="dropdown-divider"></div>
+        
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/addtour.jsp">Add Tour</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/viewtours.jsp">View Tours</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/UserController?viewUsers">Registered Users</a>

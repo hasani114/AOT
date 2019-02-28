@@ -1,9 +1,9 @@
-package com.artoftravel.pk.model;
+package com.artoftravel.pk.tour;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class Tourdoa {
+public class Tourdao {
 
 	
 	public void addNewTour(TourModel tour) {
