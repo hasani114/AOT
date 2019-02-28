@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class TourModel {
 	
+	private int tourID;
 	private String tourname;
 	private String tourlocation;
 	private String country;
@@ -30,6 +31,36 @@ public class TourModel {
 	
 	}
 	
+	public TourModel(int tourID, String tourname, String tourlocation, String country, String groupsize, String tourprice,
+			String tourduration, String tourdescription) {
+		super();
+		this.tourID = tourID;
+		this.tourname = tourname;
+		this.tourlocation = tourlocation;
+		this.country = country;
+		this.groupsize = groupsize;
+		this.tourprice = tourprice;
+		this.tourduration = tourduration;
+		this.tourdescription = tourdescription;
+	
+	}
+	
+	public int getTourID() {
+		return tourID;
+	}
+
+	public void setTourID(int tourID) {
+		this.tourID = tourID;
+	}
+
+	public String getTourduration() {
+		return tourduration;
+	}
+
+	public void setTourduration(String tourduration) {
+		this.tourduration = tourduration;
+	}
+
 	public TourModel() {
 		super();
 		

@@ -1,6 +1,7 @@
 package com.artoftravel.pk.model;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseHelper {
 
@@ -62,4 +63,81 @@ public class DatabaseHelper {
 	public void updateTour() {
 		
 	}
+	
+	public ArrayList<TourModel> viewAllTours() {
+		
+		ArrayList<TourModel> tourlist = new ArrayList<TourModel>();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			String query = "select * from tour_details";
+			PreparedStatement stmt = con.prepareStatement(query);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_description")));
+				
+			}
+			
+			stmt.close();
+			rs.close();
+			con.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		
+		
+			
+			return tourlist;
+		
+	}
+	
+	public ArrayList<TourModel> searchTours (String duration, String price, String tourname) {
+		
+		ArrayList<TourModel> tourlist = new ArrayList<TourModel>();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			String query = "select * from tour_details Where tour_duration <= ? AND tour_price <= ? AND tour_name LIKE CONCAT('%', ?, '%') ;";
+			
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, duration);
+			stmt.setString(2, price);
+			stmt.setString(3, tourname);
+			
+			ResultSet rs = stmt.executeQuery();
+		
+			while (rs.next()) {
+				
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_description")));
+				
+			}
+			
+			stmt.close();
+			rs.close();
+			con.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+
+		}
+		
+		
+		
+		return tourlist;
+	}
+	
+	
+	
+	
 }

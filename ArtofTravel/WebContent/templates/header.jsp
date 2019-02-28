@@ -32,7 +32,7 @@
       </li>
     
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/viewtours.jsp">Upcoming Tours</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/TourController?viewAll">Upcoming Tours</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="${pageContext.request.contextPath}/reserve.jsp">Reserve</a>

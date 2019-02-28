@@ -2,8 +2,11 @@ package com.artoftravel.pk;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -43,7 +46,104 @@ public class TourController extends HttpServlet {
 			
 		}
 		
-		response.getWriter().append("Served at Tour Controller: ").append(request.getContextPath());		
+		if (request.getQueryString().contains("viewAll")) {
+			
+			DatabaseHelper database = new DatabaseHelper();
+			ArrayList<TourModel> tourlist = database.viewAllTours();
+			
+			request.setAttribute("tourlist", tourlist);
+			
+			RequestDispatcher res = request.getRequestDispatcher("/tours.jsp");
+			res.forward(request, response);
+			
+		}
+		
+		
+		
+		
+		// SEARCH STARTS HERE
+		
+		
+		
+		// See which search terms have value
+		
+		/*
+		 * String searchtourname = request.getParameter("tourname");
+		 * System.out.print(searchtourname);
+		 * 
+		 * if (searchtourname.isEmpty()) {
+		 * 
+		 * System.out.print("Empty Search Criteria"); } else if
+		 * (searchtourname.isBlank()) { System.out.print("Blank Search Criteria");
+		 * 
+		 * }
+		 */
+		//Getting all the parameter names
+		
+		Enumeration<String> enumeration = request.getParameterNames();
+        while (enumeration.hasMoreElements()) {
+            String parameterName = (String) enumeration.nextElement();
+			System.out.println(parameterName);
+			
+        }
+        
+        Map params = request.getParameterMap();
+        Set allparams = params.keySet();
+        
+        if (allparams.contains("searchform")) {
+      
+        String tourname = "";	
+        String tourlocation = "";
+        String tourprice = request.getParameter("tourprice");
+        String tourduration = request.getParameter("tourduration");
+       
+        if (allparams.contains("tourname")) {
+        	
+        	if (request.getParameter("tourname").isBlank() && request.getParameter("tourname").isEmpty()) {
+            	tourname = "All Tours";
+        	}
+        	tourname = request.getParameter("tourname");
+			System.out.println("Set Tourname Variable:" + tourname);
+
+        } if (allparams.contains("tourlocation")) {
+        	tourlocation = request.getParameter("tourlocation");
+			System.out.println("Set TourLocation Variable:" + tourlocation);
+
+        }  
+
+        System.out.println("Printing outside the if: " + tourname);
+        
+        
+        
+        if (allparams.contains("tourduration")) {
+        	
+        	String duration = request.getParameter("tourduration");
+        	String price = request.getParameter("tourprice");
+
+        	
+        	DatabaseHelper database = new DatabaseHelper();
+			ArrayList<TourModel> tourlist = database.searchTours(duration, price, tourname);
+			
+			request.setAttribute("tourlist", tourlist);
+			request.setAttribute("tourprice", price);
+			request.setAttribute("tourduration", duration);
+
+			
+			RequestDispatcher res = request.getRequestDispatcher("/tours.jsp");
+			res.forward(request, response);
+        	
+        }
+		
+        }
+		//Find out which parameters are not blank
+		
+		//Pass params that are not blank to search method
+		
+		//Retreive results and send to page
+		
+		
+
+		
 
 	
 			
@@ -81,8 +181,7 @@ public class TourController extends HttpServlet {
 		
 		// After processing update to database forwarding request to viewtours page
 		
-		RequestDispatcher res = request.getRequestDispatcher("/viewtours.jsp");
-		res.forward(request, response);			
+		response.sendRedirect("/ArtofTravel/TourController?viewAll");
 		
 		
 		

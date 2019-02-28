@@ -70,6 +70,10 @@
 				</select>
 			</div>
 			<div class="form-group col-md-6">
+   		 <label for="exampleFormControlFile1">Tour Image</label>
+   		 <input type="file" name="tourimage" class="form-control-file">
+  			</div>
+			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Description</label> 
 				<textarea type="text"
 					class="form-control" name="tourdescription"></textarea>
