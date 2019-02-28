@@ -53,6 +53,7 @@
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/UserController?viewUsers">Registered Users</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/reservations.jsp">Reservations</a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/ReservationController?viewAll">Reservations JSTL</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/TourController?admintours">Tours JSTL</a>
           
           
           <div class="dropdown-divider"></div>

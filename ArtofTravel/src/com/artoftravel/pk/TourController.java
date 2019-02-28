@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.artoftravel.pk.model.*;
+import com.artoftravel.pk.reservations.ReservationEntity;
 
 
 @WebServlet("/TourController")
@@ -35,7 +37,7 @@ public class TourController extends HttpServlet {
 		if (request.getQueryString().contains("delete")) {
 			String deletetour = request.getParameter("delete");
 			
-			DatabaseHelper database = new DatabaseHelper();
+			Tourdoa database = new Tourdoa();
 			database.deleteTour(deletetour);
 			
 			
@@ -48,15 +50,57 @@ public class TourController extends HttpServlet {
 		
 		if (request.getQueryString().contains("viewAll")) {
 			
-			DatabaseHelper database = new DatabaseHelper();
+			Tourdoa database = new Tourdoa();
 			ArrayList<TourModel> tourlist = database.viewAllTours();
+			
+			Iterator it = tourlist.iterator();
+			
+			while (it.hasNext()) {
+				
+			
+				TourModel tour = (TourModel) it.next();
+				ArrayList<ReservationEntity> reservations = tour.getReservations();
+				System.out.println("Tour Name: " + tour.getTourname());
+				System.out.println("Tour ID: " + tour.getTourID());
+					
+				Iterator resit = reservations.iterator();
+				
+				for (int i=0; i<reservations.size(); i++) {
+					
+						ReservationEntity res = (ReservationEntity) resit.next();
+						System.out.println("Reservation ID : " + res.getReservationID() + "Reservation Attendees : " + res.getNumberofattendees() + "Reservation Status : " + res.getReservationstatus() );
+				
+						i++;
+				}
+				
+				System.out.println("Ended Tour Loop Try");
+
+				
+				
+				
+			}
 			
 			request.setAttribute("tourlist", tourlist);
 			
 			RequestDispatcher res = request.getRequestDispatcher("/tours.jsp");
 			res.forward(request, response);
-			
 		}
+			
+		
+			if (request.getQueryString().contains("admintours")) {
+			
+			Tourdoa database = new Tourdoa();
+			ArrayList<TourModel> tourlist = database.viewAllTours();
+			
+			
+			
+			request.setAttribute("tourlist", tourlist);
+			
+			RequestDispatcher res = request.getRequestDispatcher("/Admin/tours.jsp");
+			res.forward(request, response);
+		}
+			
+		
 		
 		
 		
@@ -121,7 +165,7 @@ public class TourController extends HttpServlet {
         	String price = request.getParameter("tourprice");
 
         	
-        	DatabaseHelper database = new DatabaseHelper();
+        	Tourdoa database = new Tourdoa();
 			ArrayList<TourModel> tourlist = database.searchTours(duration, price, tourname);
 			
 			request.setAttribute("tourlist", tourlist);
@@ -133,8 +177,12 @@ public class TourController extends HttpServlet {
 			res.forward(request, response);
         	
         }
+        
+        
+        
 		
         }
+		}
 		//Find out which parameters are not blank
 		
 		//Pass params that are not blank to search method
@@ -150,7 +198,7 @@ public class TourController extends HttpServlet {
 				
 		
 		
-	}
+
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -174,7 +222,7 @@ public class TourController extends HttpServlet {
 		// Create instance of database helper class and call its add new tour method to update the database with the new entry
 		
 		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription);		
-		DatabaseHelper dbUpdate = new DatabaseHelper();
+		Tourdoa dbUpdate = new Tourdoa();
 		dbUpdate.addNewTour(tour);
 		
 		

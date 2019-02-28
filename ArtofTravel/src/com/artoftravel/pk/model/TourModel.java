@@ -1,6 +1,12 @@
 package com.artoftravel.pk.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import com.artoftravel.pk.reservations.ReservationEntity;
+import com.artoftravel.pk.reservations.ReservationModel;
+
+
+
 
 public class TourModel {
 	
@@ -13,10 +19,27 @@ public class TourModel {
 	private String tourduration;
 	private String tourdescription;
 	private int availableSeats;
+	private Date tourDate;
 	
 	
 
 
+	private ArrayList<ReservationEntity> reservations;
+	
+	
+
+
+
+	public ArrayList<ReservationEntity> getReservations() {
+		
+		ReservationModel res = new ReservationModel();
+		ArrayList<ReservationEntity> reservations = res.getReservationByTourID(this.tourID);
+		return reservations;
+	}
+
+	public void setReservations(ArrayList<ReservationEntity> reservations) {
+		this.reservations = reservations;
+	}
 
 	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
 			String tourduration, String tourdescription) {
@@ -28,6 +51,21 @@ public class TourModel {
 		this.tourprice = tourprice;
 		this.tourduration = tourduration;
 		this.tourdescription = tourdescription;
+	
+	}
+	
+	public TourModel(int tourID, String tourname, String tourlocation, String country, String groupsize, String tourprice,
+			String tourduration, String tourdescription, Date tourdate) {
+		super();
+		this.tourID = tourID;
+		this.tourname = tourname;
+		this.tourlocation = tourlocation;
+		this.country = country;
+		this.groupsize = groupsize;
+		this.tourprice = tourprice;
+		this.tourduration = tourduration;
+		this.tourdescription = tourdescription;
+		this.tourDate = tourdate;
 	
 	}
 	
@@ -146,7 +184,15 @@ public class TourModel {
 		this.availableSeats = availableSeats;
 	}
 
-	
+
+	public Date getTourDate() {
+		
+		return tourDate;
+	}
+
+	public void setTourDate(Date tourDate) {
+		this.tourDate = tourDate;
+	}
 	
 	
 	

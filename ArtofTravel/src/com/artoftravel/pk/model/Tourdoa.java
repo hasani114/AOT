@@ -3,7 +3,7 @@ package com.artoftravel.pk.model;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class DatabaseHelper {
+public class Tourdoa {
 
 	
 	public void addNewTour(TourModel tour) {
@@ -23,7 +23,7 @@ public class DatabaseHelper {
 					"2001Space");
 			// here sonoo is database name, root is username and password
 			PreparedStatement stmt = con.prepareStatement(
-					"INSERT INTO tour_details (tour_name, tour_location, tour_country, group_size, tour_price, tour_duration, tour_description) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					"INSERT INTO tour_details (tour_name, tour_location, tour_country, group_size, tour_price, tour_duration, tour_description, tour_date) VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_DATE)");
 			stmt.setString(1, tourname);
 			stmt.setString(2, tourlocation);
 			stmt.setString(3, tourcountry);
@@ -80,7 +80,7 @@ public class DatabaseHelper {
 			
 			while (rs.next()) {
 				
-				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_description")));
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_description"), rs.getDate("tour_date")));
 				
 			}
 			
