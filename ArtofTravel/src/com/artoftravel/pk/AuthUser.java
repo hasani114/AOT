@@ -16,7 +16,7 @@ import javax.servlet.http.*;
 /**
  * Servlet Filter implementation class AuthUser
  */
-@WebFilter(filterName="/AuthUser", urlPatterns= { "/Admin/*", "/reserve.jsp"})
+@WebFilter(filterName="/AuthUser", urlPatterns= { "/Admin/*", "/reserve.jsp", "/Users/*"})
 
 public class AuthUser implements Filter {
 
@@ -32,8 +32,7 @@ public class AuthUser implements Filter {
 
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
+	
 		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
@@ -43,18 +42,25 @@ public class AuthUser implements Filter {
 		Object userid=  session.getAttribute("UserID");
 		
 		
+		// Get redirect URL to set as parameter
+		String redirectURL = req.getRequestURI();
+		
+		String encoded = res.encodeUrl(redirectURL);
+		
+		//If session is null send to login page with redirect URL
+		
 		if (userid == null) {
 			
-			res.sendRedirect("/ArtofTravel/Login.jsp");
+			res.sendRedirect("/ArtofTravel/Login.jsp?redirect=" + redirectURL);
 			
-		} else {
-		
+		} else { System.out.println("Successful Login");
+			
 			// pass the request along the filter chain
 			chain.doFilter(request, response);
-		
 		}
+		
+		
 
-	
 	}
 
 	

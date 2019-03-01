@@ -137,7 +137,51 @@ public class Tourdao {
 		return tourlist;
 	}
 	
+	public TourModel getTourByID(String tourID) {
+		
+		TourModel tour = new TourModel();
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+					"2001Space");
+			String query = "select * from tour_details Where ID = ? ;";
+			
+			PreparedStatement stmt = con.prepareStatement(query);
+			stmt.setString(1, tourID);
+		
+			ResultSet rs = stmt.executeQuery();
+			
+			while (rs.next()) { 
+				
+				tour.setTourID(rs.getInt("ID"));
+				tour.setTourname(rs.getString("tour_name"));
+				tour.setTourlocation(rs.getString("tour_location"));
+				tour.setCountry(rs.getString("tour_country"));
+				tour.setGroupsize(rs.getString("group_size"));
+				tour.setTourprice(rs.getString("tour_price"));
+				tour.setTourduration(rs.getString("tour_duration"));
+				tour.setTourdescription(rs.getString("tour_description"));
+				tour.setAvailableSeats(rs.getInt("available_seats"));
+				tour.setTourDate(rs.getDate("tour_date"));
+				
+			}
+			
+		}
+		
+			catch (Exception e) {
+				e.printStackTrace();
+
+			}
+			
+		return tour;
+		
+	}
+	
 	
 	
 	
 }
+	
+

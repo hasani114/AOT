@@ -182,6 +182,20 @@ public class TourController extends HttpServlet {
         
 		
         }
+        
+        
+        if (request.getQueryString().contains("tourdetails")) {
+        	
+        	Tourdao database = new Tourdao();
+        	TourModel tour = database.getTourByID(request.getParameter("tourid"));
+        	request.setAttribute("tour", tour);
+        	
+        	RequestDispatcher res = request.getRequestDispatcher("/tour-details.jsp");
+			res.forward(request, response);
+        	
+        }
+        
+        
 		}
 		//Find out which parameters are not blank
 		

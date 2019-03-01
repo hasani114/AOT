@@ -2,6 +2,9 @@ package com.artoftrael.pk.user;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -94,21 +97,21 @@ public class UserController extends HttpServlet {
 
 				}
 			
-			request.setAttribute("ValidUser", isValid);		
-    		RequestDispatcher resq = request.getRequestDispatcher("/Users/profile.jsp");
+			request.setAttribute("ValidUser", isValid);	
+			
+			 Map params = request.getParameterMap();
+			
+			 System.out.println(request.getAttribute("redirect"));
+			 
+			if (params.containsKey("redirect") != false) {
+				
+	    		
+	    		response.sendRedirect(request.getParameter("redirect"));
+				
+			} else  { RequestDispatcher resq = request.getRequestDispatcher("/Users/profile.jsp");
     		resq.forward(request, response);
+			}
     		
-			
-			
-			/*
-			 * if (auth.equals(true)) {
-			 * 
-			 * HttpSession session = request.getSession(); session.setAttribute("Username",
-			 * username);
-			 * 
-			 * response.sendRedirect("logintest.jsp"); } else
-			 * response.sendRedirect("Login.jsp");
-			 */
 			
 		}
 		
