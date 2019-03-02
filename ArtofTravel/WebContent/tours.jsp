@@ -10,16 +10,17 @@
                $input.attr('disabled', 'disabled');
         });
     }
+    
+
 </script>
  <div class="container">
  
+
  <form action="TourController" style="padding-bottom:20px;" onsubmit="DisableNullFields()"> 
  <div class="form-row">
-  <input type="hidden" class="form-control" name="searchform" value="" placeholder="Tour Name">
+  <input type="hidden" class="form-control" name="searchform" value="">
  
- <div class="col">
- <input type="text" class="form-control" name="tourname" value="" placeholder="Tour Name">
- </div>
+
  <div class="col">
  <input type="text" class="form-control" name="tourlocation" value="" placeholder="Location">
  </div>
@@ -49,7 +50,7 @@
   <div class="card-media">
     <!-- media container -->
     <div class="card-media-object-container">
-      <div class="card-media-object" style="background-image: url(https://s9.postimg.cc/y0sfm95gv/prince_f.jpg);"></div>
+      <div class="card-media-object" style="background-image: url(${tourlist.tourBanner});"></div>
       <span class="card-media-object-tag subtle">Selling Fast</span>
       
     </div>

@@ -2,7 +2,10 @@ package com.artoftravel.pk.tour;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -53,32 +56,7 @@ public class TourController extends HttpServlet {
 			Tourdao database = new Tourdao();
 			ArrayList<TourModel> tourlist = database.viewAllTours();
 			
-			Iterator it = tourlist.iterator();
 			
-			while (it.hasNext()) {
-				
-			
-				TourModel tour = (TourModel) it.next();
-				ArrayList<ReservationModel> reservations = tour.getReservations();
-				System.out.println("Tour Name: " + tour.getTourname());
-				System.out.println("Tour ID: " + tour.getTourID());
-					
-				Iterator resit = reservations.iterator();
-				
-				for (int i=0; i<reservations.size(); i++) {
-					
-						ReservationModel res = (ReservationModel) resit.next();
-						System.out.println("Reservation ID : " + res.getReservationID() + "Reservation Attendees : " + res.getNumberofattendees() + "Reservation Status : " + res.getReservationstatus() );
-				
-						i++;
-				}
-				
-				System.out.println("Ended Tour Loop Try");
-
-				
-				
-				
-			}
 			
 			request.setAttribute("tourlist", tourlist);
 			
@@ -105,57 +83,28 @@ public class TourController extends HttpServlet {
 		
 		
 		
-		// SEARCH STARTS HERE
-		
-		
-		
-		// See which search terms have value
-		
-		/*
-		 * String searchtourname = request.getParameter("tourname");
-		 * System.out.print(searchtourname);
-		 * 
-		 * if (searchtourname.isEmpty()) {
-		 * 
-		 * System.out.print("Empty Search Criteria"); } else if
-		 * (searchtourname.isBlank()) { System.out.print("Blank Search Criteria");
-		 * 
-		 * }
-		 */
-		//Getting all the parameter names
-		
-		Enumeration<String> enumeration = request.getParameterNames();
-        while (enumeration.hasMoreElements()) {
-            String parameterName = (String) enumeration.nextElement();
-			System.out.println(parameterName);
-			
-        }
         
         Map params = request.getParameterMap();
         Set allparams = params.keySet();
         
         if (allparams.contains("searchform")) {
       
-        String tourname = "";	
         String tourlocation = "";
+        String country = "";
         String tourprice = request.getParameter("tourprice");
         String tourduration = request.getParameter("tourduration");
        
-        if (allparams.contains("tourname")) {
-        	
-        	if (request.getParameter("tourname").isBlank() && request.getParameter("tourname").isEmpty()) {
-            	tourname = "All Tours";
-        	}
-        	tourname = request.getParameter("tourname");
-			System.out.println("Set Tourname Variable:" + tourname);
-
-        } if (allparams.contains("tourlocation")) {
+       if (allparams.contains("tourlocation")) {
         	tourlocation = request.getParameter("tourlocation");
 			System.out.println("Set TourLocation Variable:" + tourlocation);
 
         }  
+       if (allparams.contains("country")) {
+       	country = request.getParameter("country");
+			System.out.println("Set TourLocation Variable:" + country);
 
-        System.out.println("Printing outside the if: " + tourname);
+       }  
+
         
         
         
@@ -166,7 +115,7 @@ public class TourController extends HttpServlet {
 
         	
         	Tourdao database = new Tourdao();
-			ArrayList<TourModel> tourlist = database.searchTours(duration, price, tourname);
+			ArrayList<TourModel> tourlist = database.searchTours(duration, price, tourlocation, country);
 			
 			request.setAttribute("tourlist", tourlist);
 			request.setAttribute("tourprice", price);
@@ -197,11 +146,7 @@ public class TourController extends HttpServlet {
         
         
 		}
-		//Find out which parameters are not blank
-		
-		//Pass params that are not blank to search method
-		
-		//Retreive results and send to page
+
 		
 		
 
@@ -217,7 +162,6 @@ public class TourController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 		
 		
 		// Getting paratmeter from post request and creating variables to send to the TourModel Class.
@@ -229,13 +173,25 @@ public class TourController extends HttpServlet {
 		String tourprice = request.getParameter("tourprice");
 		String tourduration = request.getParameter("tourduration");
 		String tourdescription = request.getParameter("tourdescription");
+		String tourbanner = request.getParameter("tourbanner");
+		String date = request.getParameter("tourdate");
+
+	    Date date1 = null;
+		try {
+			date1 = new SimpleDateFormat("MM/dd/yyyy").parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}  
+
+		
+
 		
 		
 		
 		// Create an instance of TourModel and pass the values retreived from the parameters above
 		// Create instance of database helper class and call its add new tour method to update the database with the new entry
 		
-		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription);		
+		TourModel tour = new TourModel(tourname, tourlocation, country, groupsize, tourprice, tourduration, tourdescription, tourbanner, date1);		
 		Tourdao dbUpdate = new Tourdao();
 		dbUpdate.addNewTour(tour);
 		
@@ -251,22 +207,7 @@ public class TourController extends HttpServlet {
 		
 		
 		
-		
-		
-		/*
-		 * request.setAttribute("tourname", tourname); request.setAttribute("country",
-		 * country); request.setAttribute("tourlocation", tourlocation);
-		 * request.setAttribute("groupsize", groupsize);
-		 * request.setAttribute("tourprice", tourprice);
-		 * request.setAttribute("tourduration", tourduration);
-		 * request.setAttribute("tourdescription", tourdescription);
-		 */
-		
-		// Cast the Strings Groupsize, Number of Days, Tour Price to Int and Doubles
-//		int grpsize = Integer.parseInt(groupsize);
-//		int numdays = Integer.parseInt(tourduration);
-//		double tourpric = Integer.parseInt(tourprice);
-		
+	
 		
 	}
 

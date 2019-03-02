@@ -101,15 +101,14 @@ public class UserController extends HttpServlet {
 			
 			 Map params = request.getParameterMap();
 			
-			 System.out.println(request.getAttribute("redirect"));
 			 
-			if (params.containsKey("redirect") != false) {
+			if (request.getParameter("redirect").isEmpty()) {
 				
-	    		
-	    		response.sendRedirect(request.getParameter("redirect"));
+				RequestDispatcher resq = request.getRequestDispatcher("/Users/profile.jsp");
+	    		resq.forward(request, response);
 				
-			} else  { RequestDispatcher resq = request.getRequestDispatcher("/Users/profile.jsp");
-    		resq.forward(request, response);
+			} else  { 	 response.sendRedirect(request.getParameter("redirect"));
+
 			}
     		
 			

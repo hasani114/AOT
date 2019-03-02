@@ -2,6 +2,8 @@ package com.artoftravel.pk.tour;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class Tourdao {
 
@@ -15,6 +17,10 @@ public class Tourdao {
 		String tourduration = tour.getTourDuration();
 		String tourprice = tour.getTourprice();
 		String tourdescription = tour.getTourdescription();
+		String tourbanner = tour.getTourBanner();
+		Date tourdate = tour.getTourDate();
+
+
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,7 +29,7 @@ public class Tourdao {
 					"2001Space");
 			// here sonoo is database name, root is username and password
 			PreparedStatement stmt = con.prepareStatement(
-					"INSERT INTO tour_details (tour_name, tour_location, tour_country, group_size, tour_price, tour_duration, tour_description, tour_date) VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_DATE)");
+					"INSERT INTO tour_details (tour_name, tour_location, tour_country, group_size, tour_price, tour_duration, tour_desc, tour_banner, tour_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			stmt.setString(1, tourname);
 			stmt.setString(2, tourlocation);
 			stmt.setString(3, tourcountry);
@@ -31,6 +37,9 @@ public class Tourdao {
 			stmt.setString(5, tourprice);
 			stmt.setString(6, tourduration);
 			stmt.setString(7, tourdescription);
+			stmt.setString(8, tourbanner);
+			stmt.setDate(9, new java.sql.Date(tourdate.getTime()));
+
 
 			stmt.execute();
 
@@ -80,7 +89,7 @@ public class Tourdao {
 			
 			while (rs.next()) {
 				
-				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_description"), rs.getDate("tour_date")));
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
 				
 			}
 			
@@ -99,7 +108,7 @@ public class Tourdao {
 		
 	}
 	
-	public ArrayList<TourModel> searchTours (String duration, String price, String tourname) {
+	public ArrayList<TourModel> searchTours (String duration, String price, String tourlocation, String country) {
 		
 		ArrayList<TourModel> tourlist = new ArrayList<TourModel>();
 		
@@ -108,12 +117,14 @@ public class Tourdao {
 
 			Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
 					"2001Space");
-			String query = "select * from tour_details Where tour_duration <= ? AND tour_price <= ? AND tour_name LIKE CONCAT('%', ?, '%') ;";
+			String query = "select * from tour_details Where tour_duration <= ? AND tour_price <= ? AND tour_location LIKE CONCAT('%', ?, '%') AND tour_country LIKE CONCAT('%', ?, '%') ;";
 			
 			PreparedStatement stmt = con.prepareStatement(query);
 			stmt.setString(1, duration);
 			stmt.setString(2, price);
-			stmt.setString(3, tourname);
+			stmt.setString(3, tourlocation);
+			stmt.setString(4, country);
+
 			
 			ResultSet rs = stmt.executeQuery();
 		
@@ -162,8 +173,9 @@ public class Tourdao {
 				tour.setGroupsize(rs.getString("group_size"));
 				tour.setTourprice(rs.getString("tour_price"));
 				tour.setTourduration(rs.getString("tour_duration"));
-				tour.setTourdescription(rs.getString("tour_description"));
+				tour.setTourdescription(rs.getString("tour_desc"));
 				tour.setAvailableSeats(rs.getInt("available_seats"));
+				tour.setTourBanner(rs.getString("tour_banner"));
 				tour.setTourDate(rs.getDate("tour_date"));
 				
 			}

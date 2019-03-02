@@ -20,26 +20,15 @@ public class TourModel {
 	private String tourdescription;
 	private int availableSeats;
 	private Date tourDate;
-	
-	
-
-
+	private String tourBanner;
 	private ArrayList<ReservationModel> reservations;
 	
 	
-
-
-
-	public ArrayList<ReservationModel> getReservations() {
+	public TourModel() {
+		super();
 		
-		Reservationdao res = new Reservationdao();
-		ArrayList<ReservationModel> reservations = res.getReservationByTourID(this.tourID);
-		return reservations;
 	}
 
-	public void setReservations(ArrayList<ReservationModel> reservations) {
-		this.reservations = reservations;
-	}
 
 	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
 			String tourduration, String tourdescription) {
@@ -54,8 +43,23 @@ public class TourModel {
 	
 	}
 	
+	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
+			String tourduration, String tourdescription, String tourbanner, Date tourdate) {
+		super();
+		this.tourname = tourname;
+		this.tourlocation = tourlocation;
+		this.country = country;
+		this.groupsize = groupsize;
+		this.tourprice = tourprice;
+		this.tourduration = tourduration;
+		this.tourdescription = tourdescription;
+		this.tourBanner = tourbanner;
+		this.tourDate = tourdate;
+	
+	}
+	
 	public TourModel(int tourID, String tourname, String tourlocation, String country, String groupsize, String tourprice,
-			String tourduration, String tourdescription, Date tourdate) {
+			String tourduration, String tourdescription, String tourbanner, Date tourdate) {
 		super();
 		this.tourID = tourID;
 		this.tourname = tourname;
@@ -65,6 +69,7 @@ public class TourModel {
 		this.tourprice = tourprice;
 		this.tourduration = tourduration;
 		this.tourdescription = tourdescription;
+		this.tourBanner = tourbanner;
 		this.tourDate = tourdate;
 	
 	}
@@ -99,11 +104,7 @@ public class TourModel {
 		this.tourduration = tourduration;
 	}
 
-	public TourModel() {
-		super();
-		
-	
-	}
+
 
 
 	public String getTourname() {
@@ -194,7 +195,25 @@ public class TourModel {
 		this.tourDate = tourDate;
 	}
 	
+	public String getTourBanner() {
+		return tourBanner;
+	}
+
+	public void setTourBanner(String tourBanner) {
+		this.tourBanner = tourBanner;
+	}
 	
-	
+
+	public ArrayList<ReservationModel> getReservations() {
+		
+		Reservationdao res = new Reservationdao();
+		ArrayList<ReservationModel> reservations = res.getReservationByTourID(this.tourID);
+		return reservations;
+	}
+
+	public void setReservations(ArrayList<ReservationModel> reservations) {
+		this.reservations = reservations;
+	}
+
 
 }
