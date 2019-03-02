@@ -84,9 +84,10 @@ public class Tourdao {
 					"2001Space");
 			String query = "select * from tour_details";
 			PreparedStatement stmt = con.prepareStatement(query);
-			
+
 			ResultSet rs = stmt.executeQuery();
-			
+
+
 			while (rs.next()) {
 				
 				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
@@ -130,7 +131,7 @@ public class Tourdao {
 		
 			while (rs.next()) {
 				
-				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_description")));
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
 				
 			}
 			

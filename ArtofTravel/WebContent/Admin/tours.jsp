@@ -55,12 +55,10 @@
  <th scope="col">Duration</th>
  <th scope="col">Description</th>
   <th scope="col">Date</th>
- 
-  <th scope="col"></th>
- 
+  
  </thead>
  
- <tbody>
+ 
  <c:forEach var="tourlist" items="${tourlist}">
 
 <tr>
@@ -72,9 +70,10 @@
 <td>${tourlist.tourprice}</td>
 <td>${tourlist.tourduration}</td>
 <td>${tourlist.tourdescription}</td>
-<td>${tourlist.tourDate}</td>
+<td>${tourlist.tourDate}</td> </tr>
 
-	<tr>
+
+<td>
 	 <thead class="thead-light">
 	
 	<th scope="col">Reservation ID</th>
@@ -82,8 +81,8 @@
 	<th scope="col">Status</th>
 	<th scope="col">Payment Status</th>
 	<th scope="col">Attendees</th>
+	
 	</thead>
-	</tr>
 	<c:forEach var="reservations" items="${tourlist.reservations}">
 	<tr><td>${reservations.reservationID}</td>
 	<td>${reservations.userID}</td>
@@ -92,20 +91,14 @@
 		<td>${reservations.numberofattendees}</td>
 	</tr>
 	 </c:forEach>
-	
-	
+
 <%-- <td><a href="/ArtofTravel/reserve.jsp?tourid=${tourlist.tourID}&userid=${sessionScope.UserID}">Edit</a></td>
  --%>
  
- </tr>
+ 
  </c:forEach>
  
- 
- </tbody>
- 
- </table>
- 
- 
+</table>
  
  
  

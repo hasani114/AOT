@@ -43,9 +43,11 @@ public class AuthUser implements Filter {
 		
 		
 		// Get redirect URL to set as parameter
-		String redirectURL = req.getRequestURI();
-		
+		String tourid = request.getParameter("tourid");
+		String redirectURL = (req.getRequestURI() + "&tourid=" + tourid);
+
 		String encoded = res.encodeUrl(redirectURL);
+		
 		
 		//If session is null send to login page with redirect URL
 		
