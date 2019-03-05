@@ -2,14 +2,21 @@ package com.artoftravel.pk.reservations;
 
 public class ReservationAttendees {
 	
+	private int reservationId;
 	private int attendeeID;
 	private String attendeeName;
 	private String attendeeAge;
 	private String attendeeGender;
 	
-	
-	public ReservationAttendees(int attendeeID, String attendeeName, String attendeeAge, String attendeeGender) {
+
+	public ReservationAttendees() {
 		super();
+	}
+
+	public ReservationAttendees(int reservationId, int attendeeID, String attendeeName, String attendeeAge,
+			String attendeeGender) {
+		super();
+		this.reservationId = reservationId;
 		this.attendeeID = attendeeID;
 		this.attendeeName = attendeeName;
 		this.attendeeAge = attendeeAge;
@@ -17,10 +24,16 @@ public class ReservationAttendees {
 	}
 
 
-	public ReservationAttendees() {
-		super();
-		// TODO Auto-generated constructor stub
+	public int getReservationId() {
+		return reservationId;
 	}
+
+
+	public void setReservationId(int reservationId) {
+		this.reservationId = reservationId;
+	}
+
+
 
 
 	public int getAttendeeID() {
@@ -61,8 +74,7 @@ public class ReservationAttendees {
 	public void setAttendeeGender(String attendeeGender) {
 		this.attendeeGender = attendeeGender;
 	}
-	
-	
+
 	
 	
 	

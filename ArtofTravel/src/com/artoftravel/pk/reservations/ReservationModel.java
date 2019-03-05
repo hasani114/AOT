@@ -12,14 +12,14 @@ public class ReservationModel {
 	private int reservationpaymentstatus;
 	private int numberofattendees;
 	private Date reservationcreationdate;
-	private ArrayList<ReservationAttendees> attendees;
+	private ReservationAttendees attendees;
 	
 	
-	public ArrayList<ReservationAttendees> getAttendees() {
+	public ReservationAttendees getAttendees() {
 		return attendees;
 	}
 
-	public void setAttendees(ArrayList<ReservationAttendees> attendees) {
+	public void ReservationAttendees (ReservationAttendees attendees) {
 		this.attendees = attendees;
 	}
 

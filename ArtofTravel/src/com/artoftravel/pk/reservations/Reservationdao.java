@@ -182,6 +182,40 @@ public ArrayList<ReservationModel> getReservationByTourID(int tourID) {
 		return reservations;
 		
 	}
+
+
+public ArrayList<ReservationModel> getReservationsByUserId(int userid) {
+
+	ArrayList<ReservationModel> reservations = new ArrayList<ReservationModel>();
+
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		Connection con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ArtofTravel", "root",
+				"2001Space");
+		
+		String query = "select * from reservations where user_ID = ?";
+		PreparedStatement stmt = con.prepareStatement(query);
+		stmt.setInt(1, userid);
+	
+		ResultSet rs = stmt.executeQuery();
+		
+		while (rs.next()) {
+			
+			reservations.add(new ReservationModel(rs.getInt("ID"), rs.getInt("tour_ID"),rs.getInt("user_ID"),rs.getString("reservation_Status"),rs.getInt("reservation_payment_status"),rs.getInt("number_of_attendees"), rs.getDate("reservation_create_date")));
+		
+		} 
+			stmt.close();
+			rs.close();
+			con.close();
+	}	
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	
+	return reservations;
+}
 	
 	
 }

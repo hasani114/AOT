@@ -22,6 +22,8 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />   
+   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/main.css" />   
+            <script type="text/javascript" src="${pageContext.request.contextPath}/src/test.js"></script>
    
    
 
@@ -60,7 +62,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/Users/profile.jsp">My Profile</a>
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Users/reservations.jsp">My Reservations</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/ReservationController?mybookings">My Reservations</a>
         
         
                   <div class="dropdown-divider"></div>

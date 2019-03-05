@@ -64,7 +64,27 @@ public class ReservationController extends HttpServlet {
  }
 		  
 		  
+		  // User Reservations 
 		  
+			if (request.getQueryString().contentEquals("mybookings")) {
+				
+				Reservationdao reserve = new Reservationdao();
+				
+				HttpSession session = request.getSession();
+				
+				int userid = (int) session.getAttribute("UserID");
+				
+				System.out.println(userid);
+				
+				ArrayList<ReservationModel> reservations = reserve.getReservationsByUserId(userid);
+
+				request.setAttribute("Reservations", reservations);
+				
+				RequestDispatcher rs = request.getRequestDispatcher("/Users/reservations.jsp");
+				rs.forward(request, response);
+				
+			}
+
 		 
 	
 	}
