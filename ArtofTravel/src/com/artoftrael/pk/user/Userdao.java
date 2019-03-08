@@ -31,7 +31,7 @@ public class Userdao {
 			stmt.setString(4, user.getUserPhone());
 			stmt.setString(5, user.getUserGender());
 			stmt.setString(6, user.getUserPassword());
-			stmt.setString(7, "user");
+			stmt.setString(7, "User");
 
 			
 		
@@ -159,8 +159,10 @@ public class Userdao {
 					String phone = rs.getString("user_phone");
 					String gender = rs.getString("user_gender");
 					String password = rs.getString("user_password");
+					String userrole = rs.getString("user_role");
+
 					
-					UserModel userinfo = new UserModel(userID, firstname, lastname, email, phone, gender, password);
+					UserModel userinfo = new UserModel(userID, firstname, lastname, email, phone, gender, password, userrole);
 					
 					user = userinfo;
 

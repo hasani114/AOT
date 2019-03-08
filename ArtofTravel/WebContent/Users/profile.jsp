@@ -9,7 +9,7 @@ Name: ${Name} </br>
 User ID: ${UserID} </br>
 Email: ${Email} </br>
 Phone: ${Phone} </br>
-
+Role: ${Role} 
 
 
 

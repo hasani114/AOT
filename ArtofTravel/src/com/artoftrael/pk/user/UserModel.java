@@ -15,7 +15,7 @@ public class UserModel {
 	
 	
 	public UserModel(int userId, String userFirstName, String userLastName, String userEmail, 
-			String userPhone,  String userGender, String userPassword) {
+			String userPhone,  String userGender, String userPassword, String userrole) {
 		super();
 		UserId = userId;
 		UserEmail = userEmail;
@@ -24,7 +24,7 @@ public class UserModel {
 		UserGender = userGender;
 		UserPhone = userPhone;
 		UserPassword = userPassword;
-		UserRole = "user";
+		UserRole = userrole;
 	}
 
 
@@ -37,7 +37,7 @@ public class UserModel {
 		UserGender = userGender;
 		UserPhone = userPhone;
 		UserPassword = userPassword;
-		UserRole = "user";
+		UserRole = this.UserRole;
 	}
 	
 	public UserModel() {

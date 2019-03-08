@@ -19,15 +19,12 @@ public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
  
-    public UserController() {
-        super();
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at Main Controller: ").append(request.getContextPath());	
 
-    	if (request.getQueryString().contentEquals("viewUsers")) {
+    	
+    	// View Users Returns an ArrayList of Users
+    	if (request.getQueryString().equalsIgnoreCase("viewusers")) {
     		
     		Userdao ope = new Userdao();
     		request.setAttribute("viewUsers", ope.viewUsers());		
@@ -35,6 +32,9 @@ public class UserController extends HttpServlet {
     		resq.forward(request, response);
     		
     	}
+    	
+    	
+    	
     	
     	
 	}
@@ -66,6 +66,10 @@ public class UserController extends HttpServlet {
 		session.setAttribute("User", true);
 		session.setAttribute("Name", user.getUserFirstName());
 		session.setAttribute("UserID", user.getUserId());
+		session.setAttribute("Email", user.getUserEmail());
+		session.setAttribute("Phone", user.getUserPhone());
+		session.setAttribute("Role", user.getUserRole());
+
 	
 
 
@@ -94,6 +98,7 @@ public class UserController extends HttpServlet {
 				session.setAttribute("UserID", user.getUserId());
 				session.setAttribute("Email", user.getUserEmail());
 				session.setAttribute("Phone", user.getUserPhone());
+				session.setAttribute("Role", user.getUserRole());
 
 				}
 			

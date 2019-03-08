@@ -2,26 +2,36 @@ package com.artoftravel.pk.tour;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import com.artoftravel.pk.reservations.ReservationModel;
 import com.artoftravel.pk.reservations.Reservationdao;
-
-
-
 
 public class TourModel {
 	
 	private int tourID;
-	private String tourname;
-	private String tourlocation;
+	private String tourName;
+	private String tourLocation;
 	private String country;
-	private String groupsize;
-	private String tourprice;
-	private String tourduration;
-	private String tourdescription;
+	private String groupSize;
+	private String tourPrice;
+	private String tourDuration;
+	private String tourDescription;
 	private int availableSeats;
 	private Date tourDate;
 	private String tourBanner;
 	private ArrayList<ReservationModel> reservations;
+	
+	// Need to Implement
+	private List<String> tourActivities;
+	private Date tourEndDate;
+	
+	
+	
+	
+
+
+	
 	
 	
 	public TourModel() {
@@ -33,26 +43,26 @@ public class TourModel {
 	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
 			String tourduration, String tourdescription) {
 		super();
-		this.tourname = tourname;
-		this.tourlocation = tourlocation;
+		this.tourName = tourname;
+		this.tourLocation = tourlocation;
 		this.country = country;
-		this.groupsize = groupsize;
-		this.tourprice = tourprice;
-		this.tourduration = tourduration;
-		this.tourdescription = tourdescription;
+		this.groupSize = groupsize;
+		this.tourPrice = tourprice;
+		this.tourDuration = tourduration;
+		this.tourDescription = tourdescription;
 	
 	}
 	
 	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
 			String tourduration, String tourdescription, String tourbanner, Date tourdate) {
 		super();
-		this.tourname = tourname;
-		this.tourlocation = tourlocation;
+		this.tourName = tourname;
+		this.tourLocation = tourlocation;
 		this.country = country;
-		this.groupsize = groupsize;
-		this.tourprice = tourprice;
-		this.tourduration = tourduration;
-		this.tourdescription = tourdescription;
+		this.groupSize = groupsize;
+		this.tourPrice = tourprice;
+		this.tourDuration = tourduration;
+		this.tourDescription = tourdescription;
 		this.tourBanner = tourbanner;
 		this.tourDate = tourdate;
 	
@@ -62,13 +72,13 @@ public class TourModel {
 			String tourduration, String tourdescription, String tourbanner, Date tourdate) {
 		super();
 		this.tourID = tourID;
-		this.tourname = tourname;
-		this.tourlocation = tourlocation;
+		this.tourName = tourname;
+		this.tourLocation = tourlocation;
 		this.country = country;
-		this.groupsize = groupsize;
-		this.tourprice = tourprice;
-		this.tourduration = tourduration;
-		this.tourdescription = tourdescription;
+		this.groupSize = groupsize;
+		this.tourPrice = tourprice;
+		this.tourDuration = tourduration;
+		this.tourDescription = tourdescription;
 		this.tourBanner = tourbanner;
 		this.tourDate = tourdate;
 	
@@ -78,16 +88,38 @@ public class TourModel {
 			String tourduration, String tourdescription) {
 		super();
 		this.tourID = tourID;
-		this.tourname = tourname;
-		this.tourlocation = tourlocation;
+		this.tourName = tourname;
+		this.tourLocation = tourlocation;
 		this.country = country;
-		this.groupsize = groupsize;
-		this.tourprice = tourprice;
-		this.tourduration = tourduration;
-		this.tourdescription = tourdescription;
+		this.groupSize = groupsize;
+		this.tourPrice = tourprice;
+		this.tourDuration = tourduration;
+		this.tourDescription = tourdescription;
 	
 	}
 	
+	
+	
+	public TourModel(int tourID, String tourName, String tourLocation, String country, String groupSize,
+			String tourPrice, String tourDuration, String tourDescription, int availableSeats, Date tourDate,
+			String tourBanner, List<String> tourActivities, ArrayList<ReservationModel> reservations) {
+		super();
+		this.tourID = tourID;
+		this.tourName = tourName;
+		this.tourLocation = tourLocation;
+		this.country = country;
+		this.groupSize = groupSize;
+		this.tourPrice = tourPrice;
+		this.tourDuration = tourDuration;
+		this.tourDescription = tourDescription;
+		this.availableSeats = availableSeats;
+		this.tourDate = tourDate;
+		this.tourBanner = tourBanner;
+		this.tourActivities = tourActivities;
+		this.reservations = reservations;
+	}
+
+
 	public int getTourID() {
 		return tourID;
 	}
@@ -97,33 +129,33 @@ public class TourModel {
 	}
 
 	public String getTourduration() {
-		return tourduration;
+		return tourDuration;
 	}
 
 	public void setTourduration(String tourduration) {
-		this.tourduration = tourduration;
+		this.tourDuration = tourduration;
 	}
 
 
 
 
 	public String getTourname() {
-		return tourname;
+		return tourName;
 	}
 
 
 	public void setTourname(String tourname) {
-		this.tourname = tourname;
+		this.tourName = tourname;
 	}
 
 
 	public String getTourlocation() {
-		return tourlocation;
+		return tourLocation;
 	}
 
 
 	public void setTourlocation(String tourlocation) {
-		this.tourlocation = tourlocation;
+		this.tourLocation = tourlocation;
 	}
 
 
@@ -138,42 +170,42 @@ public class TourModel {
 
 
 	public String getGroupsize() {
-		return groupsize;
+		return groupSize;
 	}
 
 
 	public void setGroupsize(String groupsize) {
-		this.groupsize = groupsize;
+		this.groupSize = groupsize;
 	}
 
 
 	public String getTourprice() {
-		return tourprice;
+		return tourPrice;
 	}
 
 
 	public void setTourprice(String tourprice) {
-		this.tourprice = tourprice;
+		this.tourPrice = tourprice;
 	}
 
 
 	public String getTourDuration() {
-		return tourduration;
+		return tourDuration;
 	}
 
 
 	public void setTourDuration(String tourdays) {
-		this.tourduration = tourdays;
+		this.tourDuration = tourdays;
 	}
 
 
 	public String getTourdescription() {
-		return tourdescription;
+		return tourDescription;
 	}
 
 
 	public void setTourdescription(String tourdescription) {
-		this.tourdescription = tourdescription;
+		this.tourDescription = tourdescription;
 	}
 
 	public int getAvailableSeats() {
@@ -214,6 +246,27 @@ public class TourModel {
 	public void setReservations(ArrayList<ReservationModel> reservations) {
 		this.reservations = reservations;
 	}
+	
+	public List<String> getTourActivities() {
+		return tourActivities;
+	}
+
+
+	public void setTourActivities(List<String> tourActivities) {
+		this.tourActivities = tourActivities;
+	}
+
+
+	public Date getTourEndDate() {
+		return tourEndDate;
+	}
+
+
+	public void setTourEndDate(Date tourEndDate) {
+		this.tourEndDate = tourEndDate;
+	}
+	
+	
 
 
 }

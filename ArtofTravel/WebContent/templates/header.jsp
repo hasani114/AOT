@@ -3,6 +3,8 @@
      <%@ page import="java.sql.*" %>
      <%@ page import="javax.servlet.http.HttpSession" %>
      <%@ page import="java.io.PrintWriter" %>
+       <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+     
     
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +25,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />   
    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/main.css" />   
-            <script type="text/javascript" src="${pageContext.request.contextPath}/src/test.js"></script>
+  <script type="text/javascript" src="${pageContext.request.contextPath}/src/test.js"></script>
    
    
 
@@ -64,7 +66,10 @@
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/Users/profile.jsp">My Profile</a>
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/ReservationController?mybookings">My Reservations</a>
         
-        
+        <c:if test = "${Email=='hasan114@gmail.com'}">
+         
+         
+         
                   <div class="dropdown-divider"></div>
         
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/addtour.jsp">Add Tour</a>
@@ -74,6 +79,7 @@
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/ReservationController?viewAll">Reservations JSTL</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/TourController?admintours">Tours JSTL</a>
           
+                </c:if>
           
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href= "${pageContext.request.contextPath}/logout.jsp">Log Out</a>
@@ -86,10 +92,7 @@
       <% } %>
      
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+   
   </div>
 </nav>
 
