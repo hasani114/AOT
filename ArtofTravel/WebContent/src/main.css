@@ -212,3 +212,22 @@ html {
   color: #41C1F2;
   text-decoration: none;
 }
+
+
+
+// Custom CC
+
+.container {
+	padding-top: 0px !important;
+}
+
+.navbar {
+	background-color: #343a407d!important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.83);
+}
+
+}
+}

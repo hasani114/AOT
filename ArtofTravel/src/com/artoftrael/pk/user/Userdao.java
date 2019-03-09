@@ -66,7 +66,7 @@ public class Userdao {
 			while (rs.next()) {
 				userlist.add(new UserModel(rs.getInt("ID"), rs.getString("user_first_name"),
 						rs.getString("user_last_name"), rs.getString("user_email"), rs.getString("user_phone"),
-						rs.getString("user_gender"), rs.getString("user_password")));
+						rs.getString("user_gender"), rs.getString("user_password"), rs.getString("user_role")));
 			}
 
 			stmt.close();

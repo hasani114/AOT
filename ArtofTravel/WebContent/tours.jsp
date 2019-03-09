@@ -1,9 +1,11 @@
  <%@ include file = "/templates/header.jsp" %>
+  <%@ include file = "/templates/banners/about-us.jsp" %>
+ 
   <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
  
 
 
- <div class="container">
+ <div class="container mt-5">
  
  <div class="" id=errors></div>
 

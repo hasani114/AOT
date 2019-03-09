@@ -1,8 +1,9 @@
 <%@ include file = "/templates/header.jsp" %>
+<%@ include file = "/templates/banners/about-us.jsp" %>
 
 
 
-<div class="container">
+<div class="container pt-5">
 <div class="card bg-light">
 <article class="card-body mx-auto" style="max-width: 400px;">
 	<h4 class="card-title mt-3 text-center">Log In</h4>
