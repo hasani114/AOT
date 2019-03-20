@@ -12,14 +12,29 @@
  <form action="TourController" name="search" style="padding-bottom:20px;" onsubmit="DisableNullFields()"> 
  <div class="form-row">
   <input type="hidden" class="form-control" name="searchform" value="">
- 
+  <div class="col">
+ <select multiple class="form-control" name="country" value="" placeholder="Country">
+   <option>  </option>
+ 	 <option> Pakistan </option>
+      <option> Vietnam</option>
+      <option>Thailand</option>
+      <option>Sri Lanka</option>
+      <option>Nepal</option>
+    </select>
+ </div>
 
  <div class="col">
- <input type="text" class="form-control" name="tourlocation" value="" placeholder="Location">
+ <Select multiple class="form-control" name="tourlocation" value="" placeholder="Location">
+  		<option>  </option>
+ 		<option> Karachi </option>
+      <option> Hingol</option>
+      <option>Mubarak Village</option>
+      <option>Saddar</option>
+      <option>Hunza</option>
+          </select>
+      
  </div>
- <div class="col">
- <input type="text" class="form-control" name="country" value="" placeholder="Country">
- </div>
+
    <div class="col">
 <label for="customRange1">Price</label>
 <input type="range" class="custom-range" name="tourprice" min="0" max="15000" value=${tourprice}> </div>
@@ -49,10 +64,10 @@
     <!-- body container -->
     <div class="card-media-body">
       
-      <span class="card-media-body-heading">${tourlist.tourname}</span>
+      <span class="card-media-body-heading">${tourlist.tourName}</span>
       <div class="card-media-body-supporting-bottom">
-        <span class="card-media-body-supporting-bottom-text subtle">${tourlist.tourlocation}, ${tourlist.country} </span>
-        <span class="card-media-body-supporting-bottom-text subtle u-float-right"> Rs ${tourlist.tourprice}</span>
+        <span class="card-media-body-supporting-bottom-text subtle">${tourlist.tourLocation}, ${tourlist.country} </span>
+        <span class="card-media-body-supporting-bottom-text subtle u-float-right"> Rs ${tourlist.tourPrice}</span>
       </div>
       <div class="card-media-body-supporting-bottom card-media-body-supporting-bottom-reveal">
         <span class="card-media-body-supporting-bottom-text subtle">#Music #Party</span>

@@ -1,6 +1,6 @@
  <%@ include file = "/templates/header.jsp" %>
  
- <div class="container">
+ <div class="container" style="margin-top:100px;">
  
 
 <a class="btn btn-outline-primary mb-2" href="/ArtofTravel/Admin/addtour.jsp" >Add Tour</a>

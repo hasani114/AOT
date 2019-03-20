@@ -10,13 +10,13 @@ public class Tourdao {
 	
 	public void addNewTour(TourModel tour) {
 
-		String tourname = tour.getTourname();
-		String tourlocation = tour.getTourlocation();
+		String tourname = tour.getTourName();
+		String tourlocation = tour.getTourLocation();
 		String tourcountry = tour.getCountry();
-		String groupsize = tour.getGroupsize();
-		String tourduration = tour.getTourDuration();
-		String tourprice = tour.getTourprice();
-		String tourdescription = tour.getTourdescription();
+		int groupsize = tour.getGroupSize();
+		int tourduration = tour.getTourDuration();
+		int tourprice = tour.getTourPrice();
+		String tourdescription = tour.getTourDescription();
 		String tourbanner = tour.getTourBanner();
 		Date tourdate = tour.getTourDate();
 
@@ -33,9 +33,9 @@ public class Tourdao {
 			stmt.setString(1, tourname);
 			stmt.setString(2, tourlocation);
 			stmt.setString(3, tourcountry);
-			stmt.setString(4, groupsize);
-			stmt.setString(5, tourprice);
-			stmt.setString(6, tourduration);
+			stmt.setInt(4, groupsize);
+			stmt.setInt(5, tourprice);
+			stmt.setInt(6, tourduration);
 			stmt.setString(7, tourdescription);
 			stmt.setString(8, tourbanner);
 			stmt.setDate(9, new java.sql.Date(tourdate.getTime()));
@@ -90,7 +90,7 @@ public class Tourdao {
 
 			while (rs.next()) {
 				
-				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getInt("group_size"), rs.getInt("tour_price"), rs.getInt("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
 				
 			}
 			
@@ -109,7 +109,7 @@ public class Tourdao {
 		
 	}
 	
-	public ArrayList<TourModel> searchTours (String duration, String price, String tourlocation, String country) {
+	public ArrayList<TourModel> searchTours (int duration, int price, String tourlocation, String country) {
 		
 		ArrayList<TourModel> tourlist = new ArrayList<TourModel>();
 		
@@ -121,8 +121,8 @@ public class Tourdao {
 			String query = "select * from tour_details Where tour_duration <= ? AND tour_price <= ? AND tour_location LIKE CONCAT('%', ?, '%') AND tour_country LIKE CONCAT('%', ?, '%') ;";
 			
 			PreparedStatement stmt = con.prepareStatement(query);
-			stmt.setString(1, duration);
-			stmt.setString(2, price);
+			stmt.setInt(1, duration);
+			stmt.setInt(2, price);
 			stmt.setString(3, tourlocation);
 			stmt.setString(4, country);
 
@@ -131,7 +131,7 @@ public class Tourdao {
 		
 			while (rs.next()) {
 				
-				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getString("group_size"), rs.getString("tour_price"), rs.getString("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
+				tourlist.add(new TourModel(rs.getInt("ID"), rs.getString("tour_name"), rs.getString("tour_location"), rs.getString("tour_country"), rs.getInt("group_size"), rs.getInt("tour_price"), rs.getInt("tour_duration"), rs.getString("tour_desc"), rs.getString("tour_banner"), rs.getDate("tour_date")));
 				
 			}
 			
@@ -168,19 +168,21 @@ public class Tourdao {
 			while (rs.next()) { 
 				
 				tour.setTourID(rs.getInt("ID"));
-				tour.setTourname(rs.getString("tour_name"));
-				tour.setTourlocation(rs.getString("tour_location"));
+				tour.setTourName(rs.getString("tour_name"));
+				tour.setTourLocation(rs.getString("tour_location"));
 				tour.setCountry(rs.getString("tour_country"));
-				tour.setGroupsize(rs.getString("group_size"));
-				tour.setTourprice(rs.getString("tour_price"));
-				tour.setTourduration(rs.getString("tour_duration"));
-				tour.setTourdescription(rs.getString("tour_desc"));
+				tour.setGroupSize(rs.getInt("group_size"));
+				tour.setTourPrice(rs.getInt("tour_price"));
+				tour.setTourDuration(rs.getInt("tour_duration"));
+				tour.setTourDescription(rs.getString("tour_desc"));
 				tour.setAvailableSeats(rs.getInt("available_seats"));
 				tour.setTourBanner(rs.getString("tour_banner"));
 				tour.setTourDate(rs.getDate("tour_date"));
 				
 			}
-			
+			stmt.close();
+			rs.close();
+			con.close();
 		}
 		
 			catch (Exception e) {

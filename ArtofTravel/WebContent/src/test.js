@@ -44,7 +44,7 @@ function checkPassword() {
 
   }
   
-  
+
 /*function testing() {
 	
 	if (string === '38') {

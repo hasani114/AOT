@@ -1,48 +1,10 @@
  <%@ include file = "/templates/header.jsp" %>
   <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+ <div class="container pb-5" style="margin-top:100px;">
  
 
-<script>
-    function DisableNullFields() {
-        $('input[type=text]').each(function(i) {
-            var $input = $(this);
-            if ($input.val() == '')
-               $input.attr('disabled', 'disabled');
-        });
-    }
-</script>
- <div class="container">
- 
- <form action="TourController" style="padding-bottom:20px;" onsubmit="DisableNullFields()"> 
- <div class="form-row">
-  <input type="hidden" class="form-control" name="searchform" value="" placeholder="Tour Name">
- 
- <div class="col">
- <input type="text" class="form-control" name="tourname" value="" placeholder="Tour Name">
- </div>
- <div class="col">
- <input type="text" class="form-control" name="tourlocation" value="" placeholder="Location">
- </div>
- <div class="col">
- <input type="text" class="form-control" name="country" value="" placeholder="Country">
- </div>
-   <div class="col">
-<label for="customRange1">Price</label>
-<input type="range" class="custom-range" name="tourprice" min="0" max="15000" value=${tourprice}> </div>
-  <div class="col">
-<label for="customRange1">Duration</label>
-<input type="range" class="custom-range" name="tourduration" min="0" max="30" value="${tourduration}"> </div>
-
-
- <button type="submit"  class="btn btn-primary">Search</button>
- 
- </div>
- 
-
- 
-</form>
- 
-
+ <div class="text-right">
+<a class="btn btn-primary mb-2" href="${pageContext.request.contextPath}/Admin/addtour.jsp">Add Tour</a></div>
  <table class="table table-hover">
 
  <thead class="thead-light">
@@ -55,6 +17,8 @@
  <th scope="col">Duration</th>
  <th scope="col">Description</th>
   <th scope="col">Date</th>
+    <th scope="col">Action</th>
+  
   
  </thead>
  
@@ -63,37 +27,18 @@
 
 <tr>
 <td>${tourlist.tourID}</td>
-<td>${tourlist.tourname}</td>
-<td>${tourlist.tourlocation}</td>
+<td>${tourlist.tourName}</td>
+<td>${tourlist.tourLocation}</td>
 <td>${tourlist.country}</td>
-<td>${tourlist.groupsize}</td>
-<td>${tourlist.tourprice}</td>
-<td>${tourlist.tourduration}</td>
-<td>${tourlist.tourdescription}</td>
-<td>${tourlist.tourDate}</td> </tr>
-
-
-<td>
-	 <thead class="thead-light">
-	
-	<th scope="col">Reservation ID</th>
-	<th scope="col">User ID</th>
-	<th scope="col">Status</th>
-	<th scope="col">Payment Status</th>
-	<th scope="col">Attendees</th>
-	
-	</thead>
-	<c:forEach var="reservations" items="${tourlist.reservations}">
-	<tr><td>${reservations.reservationID}</td>
-	<td>${reservations.userID}</td>
-	<td>${reservations.reservationstatus}</td>
-	<td>${reservations.reservationpaymentstatus}</td>
-		<td>${reservations.numberofattendees}</td>
-	</tr>
-	 </c:forEach>
-
-<%-- <td><a href="/ArtofTravel/reserve.jsp?tourid=${tourlist.tourID}&userid=${sessionScope.UserID}">Edit</a></td>
- --%>
+<td>${tourlist.groupSize}</td>
+<td>${tourlist.tourPrice}</td>
+<td>${tourlist.tourDuration}</td>
+<td>${tourlist.tourDescription}</td>
+<td>${tourlist.tourDate}</td> 
+ <td><a href="${pageContext.request.contextPath}/TourController?edittour=${tourlist.tourID}">Edit</a> |
+ <a href="${pageContext.request.contextPath}/TourController?delete=${tourlist.tourID}">Delete</a></td>
+ 
+</tr>
  
  
  </c:forEach>

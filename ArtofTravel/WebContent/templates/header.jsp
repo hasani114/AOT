@@ -23,7 +23,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />   
    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/main.css" />   
   <script type="text/javascript" src="${pageContext.request.contextPath}/src/test.js"></script>
@@ -36,33 +36,33 @@
 <!-- LOADING FONTS AND ICONS -->
 		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" property="stylesheet" type="text/css" media="all" />
 		
-		<link rel="stylesheet" type="text/css" href="src/css/pe-icon-7-stroke.css">
-		<link rel="stylesheet" type="text/css" href="src/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/css/pe-icon-7-stroke.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/css/font-awesome.min.css">
 		
 		<!-- REVOLUTION STYLE SHEETS -->
-		<link rel="stylesheet" type="text/css" href="src/css/settings.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/css/settings.css">
 		<!-- REVOLUTION LAYERS STYLES -->
-		<link rel="stylesheet" type="text/css" href="src/css/layers.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/css/layers.css">
 			
 		<!-- REVOLUTION NAVIGATION STYLES -->
-		<link rel="stylesheet" type="text/css" href="src/css/navigation.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/css/navigation.css">
 		
-		<link rel="stylesheet" type="text/css" href="src/css/noneed.css">
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/src/css/noneed.css">
 		
 		<!-- REVOLUTION JS FILES -->
-		<script type="text/javascript" src="src/js/jquery.themepunch.tools.min.js"></script>
-		<script type="text/javascript" src="src/js/jquery.themepunch.revolution.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/jquery.themepunch.tools.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/jquery.themepunch.revolution.min.js"></script>
 
 		<!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems !  The following part can be removed on Server for On Demand Loading) -->	
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.actions.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.carousel.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.kenburn.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.layeranimation.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.migration.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.navigation.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.parallax.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.slideanims.min.js"></script>
-		<script type="text/javascript" src="src/js/extensions/revolution.extension.video.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.actions.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.carousel.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.kenburn.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.layeranimation.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.migration.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.navigation.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.parallax.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.slideanims.min.js"></script>
+		<script type="text/javascript" src="${pageContext.request.contextPath}/src/js/extensions/revolution.extension.video.min.js"></script>
 
     <title>Art of Travel</title>
   </head>
@@ -104,7 +104,7 @@
       <li class="nav-item dropdown">
     <% if (session.getAttribute("UserID") != null ) {
     %>
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle btn  btn-outline-secondary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     	${Name} ${UserID}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -117,12 +117,10 @@
          
                   <div class="dropdown-divider"></div>
         
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/addtour.jsp">Add Tour</a>
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/viewtours.jsp">View Tours</a>
+                    <a class="dropdown-item" href="${pageContext.request.contextPath}/TourController?admintours">Tours</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/UserController?viewUsers">Registered Users</a>
           <a class="dropdown-item" href="${pageContext.request.contextPath}/Admin/reservations.jsp">Reservations</a>
                     <a class="dropdown-item" href="${pageContext.request.contextPath}/ReservationController?viewAll">Reservations JSTL</a>
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/TourController?admintours">Tours JSTL</a>
           
                 </c:if>
           
@@ -132,7 +130,7 @@
       </li>
      <% } else {%>
       <li class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/Login.jsp">Sign In</a>
+        <a class="nav-link btn  btn-outline-secondary" href="${pageContext.request.contextPath}/Login.jsp">Sign In</a>
       </li>
       <% } %>
      
@@ -140,5 +138,4 @@
    
   </div>
 </nav>
-
 

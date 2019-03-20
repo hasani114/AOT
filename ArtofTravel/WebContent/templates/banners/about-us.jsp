@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <% String uri = request.getServletPath();
+	String edited = uri.substring(uri.lastIndexOf("/")+1);
+	
+	String fin = edited.replaceAll(".jsp", "");
+	
+	
+%>
+
 <!-- SLIDER EXAMPLE -->
 		<section class="example">
 			<article class="content">
@@ -31,7 +40,7 @@
 									data-responsive_offset="on" 
 									data-responsive="off"
 									
-									style="z-index: 5;background-color:rgba(0, 0, 0, 0.40);border-color:rgba(0, 0, 0, 0.50);"> 
+									style="z-index: 5;background-color:rgba(0, 0, 0, 0.20);border-color:rgba(0, 0, 0, 0.50);"> 
 								</div>
 
 								<!-- LAYER NR. 2 -->
@@ -70,7 +79,7 @@
 									data-whitespace="nowrap"
 									data-transform_idle="o:1;"
 						 
-									 data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;" 
+									 data-transform_in="z:0;rX:0deg;rY:0;rZ:0;sX:1.5;sY:1.5;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;" 
 									 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
 									 data-mask_in="x:0px;y:0px;" 
 									 data-mask_out="x:inherit;y:inherit;" 
@@ -80,56 +89,12 @@
 									data-responsive_offset="on" 
 
 									
-									style="z-index: 7; white-space: nowrap;">I'M A HERO TITLE 
+									style="z-index: 7; white-space: nowrap; text-transform: Capitalize;"><%= fin %>
 								</div>
 
-								<!-- LAYER NR. 4 -->
-								<div class="tp-caption NotGeneric-SubTitle   tp-resizeme rs-parallaxlevel-0" 
-									 id="slide-68-layer-4" 
-									 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-									 data-y="['middle','middle','middle','middle']" data-voffset="['52','52','28','13']" 
-												data-width="none"
-									data-height="none"
-									data-whitespace="nowrap"
-									data-transform_idle="o:1;"
-						 
-									 data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:1500;e:Power4.easeInOut;" 
-									 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-									 data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;" 
-									 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-									data-start="1000" 
-									data-splitin="none" 
-									data-splitout="none" 
-									data-responsive_offset="on" 
+							
 
-									
-									style="z-index: 8; white-space: nowrap;">REVOLUTION SLIDER TEMPLATE 
-								</div>
-
-								<!-- LAYER NR. 5 -->
-								<div class="tp-caption NotGeneric-CallToAction rev-btn  rs-parallaxlevel-0" 
-									 id="slide-68-layer-7" 
-									 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" 
-									 data-y="['middle','middle','middle','middle']" data-voffset="['124','124','80','65']" 
-												data-width="none"
-									data-height="none"
-									data-whitespace="nowrap"
-									data-transform_idle="o:1;"
-										data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power1.easeInOut;"
-										data-style_hover="c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);cursor:pointer;"
-						 
-									 data-transform_in="y:50px;opacity:0;s:1500;e:Power4.easeInOut;" 
-									 data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" 
-									 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;" 
-									data-start="1250" 
-									data-splitin="none" 
-									data-splitout="none" 
-									data-actions='[{"event":"click","action":"scrollbelow","offset":"0px"}]'
-									data-responsive_offset="on" 
-									data-responsive="off"
-									
-									style="z-index: 9; white-space: nowrap;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">HOOK ME UP 
-								</div>
+								
 							</li>
 						</ul>
 						<div class="tp-static-layers"></div>
@@ -148,7 +113,7 @@
 								jsFileLocation:"../../revolution/js/",
 								sliderLayout:"fullwidth",
 								dottedOverlay:"none",
-								delay:9000,
+								delay:0000,
 								navigation: {
 								},
 								responsiveLevels:[1240,1024,778,480],

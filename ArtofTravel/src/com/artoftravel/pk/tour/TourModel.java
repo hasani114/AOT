@@ -13,9 +13,9 @@ public class TourModel {
 	private String tourName;
 	private String tourLocation;
 	private String country;
-	private String groupSize;
-	private String tourPrice;
-	private String tourDuration;
+	private int groupSize;
+	private int tourPrice;
+	private int tourDuration;
 	private String tourDescription;
 	private int availableSeats;
 	private Date tourDate;
@@ -40,8 +40,8 @@ public class TourModel {
 	}
 
 
-	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
-			String tourduration, String tourdescription) {
+	public TourModel(String tourname, String tourlocation, String country, int groupsize, int tourprice,
+			int tourduration, String tourdescription) {
 		super();
 		this.tourName = tourname;
 		this.tourLocation = tourlocation;
@@ -53,8 +53,8 @@ public class TourModel {
 	
 	}
 	
-	public TourModel(String tourname, String tourlocation, String country, String groupsize, String tourprice,
-			String tourduration, String tourdescription, String tourbanner, Date tourdate) {
+	public TourModel(String tourname, String tourlocation, String country, int groupsize, int tourprice,
+			int tourduration, String tourdescription, String tourbanner, Date tourdate) {
 		super();
 		this.tourName = tourname;
 		this.tourLocation = tourlocation;
@@ -68,8 +68,8 @@ public class TourModel {
 	
 	}
 	
-	public TourModel(int tourID, String tourname, String tourlocation, String country, String groupsize, String tourprice,
-			String tourduration, String tourdescription, String tourbanner, Date tourdate) {
+	public TourModel(int tourID, String tourname, String tourlocation, String country, int groupsize, int tourprice,
+			int tourduration, String tourdescription, String tourbanner, Date tourdate) {
 		super();
 		this.tourID = tourID;
 		this.tourName = tourname;
@@ -84,8 +84,8 @@ public class TourModel {
 	
 	}
 	
-	public TourModel(int tourID, String tourname, String tourlocation, String country, String groupsize, String tourprice,
-			String tourduration, String tourdescription) {
+	public TourModel(int tourID, String tourname, String tourlocation, String country, int groupsize, int tourprice,
+			int tourduration, String tourdescription) {
 		super();
 		this.tourID = tourID;
 		this.tourName = tourname;
@@ -100,8 +100,8 @@ public class TourModel {
 	
 	
 	
-	public TourModel(int tourID, String tourName, String tourLocation, String country, String groupSize,
-			String tourPrice, String tourDuration, String tourDescription, int availableSeats, Date tourDate,
+	public TourModel(int tourID, String tourName, String tourLocation, String country, int groupSize,
+			int tourPrice, int tourDuration, String tourDescription, int availableSeats, Date tourDate,
 			String tourBanner, List<String> tourActivities, ArrayList<ReservationModel> reservations) {
 		super();
 		this.tourID = tourID;
@@ -128,33 +128,31 @@ public class TourModel {
 		this.tourID = tourID;
 	}
 
-	public String getTourduration() {
+	public int getTourDuration() {
 		return tourDuration;
 	}
 
-	public void setTourduration(String tourduration) {
+	public void setTourDuration(int tourduration) {
 		this.tourDuration = tourduration;
 	}
 
 
-
-
-	public String getTourname() {
+	public String getTourName() {
 		return tourName;
 	}
 
 
-	public void setTourname(String tourname) {
+	public void setTourName(String tourname) {
 		this.tourName = tourname;
 	}
 
 
-	public String getTourlocation() {
+	public String getTourLocation() {
 		return tourLocation;
 	}
 
 
-	public void setTourlocation(String tourlocation) {
+	public void setTourLocation(String tourlocation) {
 		this.tourLocation = tourlocation;
 	}
 
@@ -169,42 +167,32 @@ public class TourModel {
 	}
 
 
-	public String getGroupsize() {
+	public int getGroupSize() {
 		return groupSize;
 	}
 
 
-	public void setGroupsize(String groupsize) {
+	public void setGroupSize(int groupsize) {
 		this.groupSize = groupsize;
 	}
 
 
-	public String getTourprice() {
+	public int getTourPrice() {
 		return tourPrice;
 	}
 
 
-	public void setTourprice(String tourprice) {
+	public void setTourPrice(int tourprice) {
 		this.tourPrice = tourprice;
 	}
 
 
-	public String getTourDuration() {
-		return tourDuration;
-	}
-
-
-	public void setTourDuration(String tourdays) {
-		this.tourDuration = tourdays;
-	}
-
-
-	public String getTourdescription() {
+	public String getTourDescription() {
 		return tourDescription;
 	}
 
 
-	public void setTourdescription(String tourdescription) {
+	public void setTourDescription(String tourdescription) {
 		this.tourDescription = tourdescription;
 	}
 

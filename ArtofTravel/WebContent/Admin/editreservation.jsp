@@ -3,7 +3,7 @@
 
 
 
-<div class="container">
+<div class="container pb-5" style="margin-top:100px;">
 
 	<form action="ReservationController" method="post">
 	<input type="hidden" name="action" value="updatereservation">

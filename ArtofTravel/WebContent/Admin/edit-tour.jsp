@@ -6,18 +6,17 @@
 
 <div class="container pb-5" style="margin-top:100px;">
 
-	<form action="../Controller?addtour" method="post">
+	<form action="TourController" method="post">
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Tour Name</label> <input type="text"
-					class="form-control" name="tourname">
+					class="form-control" name="tourname" value="${tour.tourName}">
 			</div>
 			
 				<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Date</label> 
 					
-					<input type="text"  class="form-control" name="tourdate" value="" />
-					
+					<input type="text"  class="form-control" name="tourdate" value="${tour.tourDate}" />
 			</div>
 			
 		</div>
@@ -25,11 +24,11 @@
 		
 		<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Country</label> <input type="text"
-					class="form-control" name="country">
+					class="form-control" name="country" value="${tour.country}">
 			</div>
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Location</label> <input type="text"
-					class="form-control" name="tourlocation">
+					class="form-control" name="tourlocation" value="${tour.tourLocation}">
 			</div>
 			
 		</div>
@@ -38,7 +37,7 @@
 		<div class="form-group col-md-6">
 				<label class="my-1 mr-2" for="inlineFormCustomSelectPref">Group
 					Size</label> <select class="custom-select" name="groupsize">
-					<option selected>6</option>
+					<option selected>${tour.groupSize}</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -58,12 +57,12 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Price</label> <input type="text"
-					class="form-control" name="tourprice" >
+					class="form-control" name="tourprice" value="${tour.tourPrice}" >
 			</div>
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Number of Days</label> <select
 					class="custom-select" name="tourduration">
-					<option selected>6</option>
+					<option selected>${tour.tourDuration}</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
 					<option value="3">3</option>
@@ -83,21 +82,20 @@
 			</div>
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Banner</label> <input type="text"
-					class="form-control" name="tourbanner" >
+					class="form-control" name="tourbanner" value="${tour.tourBanner}">
 			</div>
 			<div class="form-group col-md-6">
 				<label class="my-1 mr-2">Description</label> 
 				<textarea type="text"
-					class="form-control" name="tourdescription"></textarea>
+					class="form-control" name="tourdescription" value="${tour.tourDescription}"></textarea>
 			</div>
 		
 		</div>
-		<button type="submit" class="btn btn-primary">Add Tour</button>
-						<a class="btn btn-primary" href="javascript: history.go(-1)">Back</a>
+		<button type="submit" class="btn btn-primary">Edit Tour</button>
+				<a class="btn btn-primary" href="javascript: history.go(-1)">Back</a>
 		
 	</form>
 </div>
-
     <script>
 $(function() {
   $('input[name="tourdate"]').daterangepicker({

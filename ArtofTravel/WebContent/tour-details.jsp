@@ -10,19 +10,19 @@
     </div>
     </div>
  
-<H1>${tour.tourname}</H1>
+<H1>${tour.tourName}</H1>
 <p>
-<b>Location:</b> ${tour.tourlocation} </br>
+<b>Location:</b> ${tour.tourLocation} </br>
 <b>Country:</b> ${tour.country}</br>
-<b>Group Size:</b> ${tour.groupsize}</br>
-<b>Price:</b> ${tour.tourprice}</br>
-<b>Duration:</b> ${tour.tourduration}</br>
+<b>Group Size:</b> ${tour.groupSize}</br>
+<b>Price:</b> ${tour.tourPrice}</br>
+<b>Duration:</b> ${tour.tourDuration}</br>
 <b>Available Seats:</b> ${tour.availableSeats}</br>
 <b>Date:</b> ${tour.tourDate}</br>
 </p>
 
 
-<p>${tour.tourdescription}</p>
+<p>${tour.tourDescription}</p>
 
 
  

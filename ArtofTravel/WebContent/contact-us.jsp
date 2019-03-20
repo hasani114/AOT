@@ -11,5 +11,4 @@ Rough it out at EdVenture – a 5-day camp for teens seeking a taste of the wild
 
 
 
-
 <%@ include file = "/templates/footer.jsp" %>

@@ -35,7 +35,6 @@ public class TourController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				
 		
 		if (request.getQueryString().contains("delete")) {
 			String deletetour = request.getParameter("delete");
@@ -78,9 +77,26 @@ public class TourController extends HttpServlet {
 			res.forward(request, response);
 		}
 			
-		
-		
-		
+			if (request.getQueryString().contains("edittour")) {
+				
+				//Get Tour ID
+								
+				System.out.println("in edit block");
+				String tourid = request.getParameter("edittour");
+				Tourdao getTour = new Tourdao();
+				
+				//Get Tour Details from Tour ID
+
+				TourModel tour = getTour.getTourByID(tourid);
+				
+				//Send Tour Object in Session to edit-tour.jsp
+				
+				request.setAttribute("tour", tour);
+
+				RequestDispatcher res = request.getRequestDispatcher("/Admin/edit-tour.jsp");
+				res.forward(request, response);		
+				
+			}
 		
 		
         
@@ -110,8 +126,8 @@ public class TourController extends HttpServlet {
         
         if (allparams.contains("tourduration")) {
         	
-        	String duration = request.getParameter("tourduration");
-        	String price = request.getParameter("tourprice");
+        	int duration = Integer.parseInt(request.getParameter("tourduration"));
+        	int price = Integer.parseInt(request.getParameter("tourprice"));
 
         	
         	Tourdao database = new Tourdao();
@@ -169,9 +185,16 @@ public class TourController extends HttpServlet {
 		String tourname = request.getParameter("tourname");
 		String tourlocation = request.getParameter("tourlocation");
 		String country = request.getParameter("country");
-		String groupsize = request.getParameter("groupsize");
-		String tourprice = request.getParameter("tourprice");
-		String tourduration = request.getParameter("tourduration");
+		int groupsize = Integer.parseInt(request.getParameter("groupsize"));
+		
+		
+		int tourprice;
+		if (request.getParameter("tourprice").isEmpty() || request.getParameter("tourprice").isBlank()) {
+			tourprice = 0;
+		} else tourprice = Integer.parseInt(request.getParameter("tourprice"));
+		
+		
+		int tourduration = Integer.parseInt(request.getParameter("tourduration"));
 		String tourdescription = request.getParameter("tourdescription");
 		String tourbanner = request.getParameter("tourbanner");
 		String date = request.getParameter("tourdate");

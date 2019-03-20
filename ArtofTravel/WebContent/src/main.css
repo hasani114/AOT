@@ -229,5 +229,63 @@ html {
     color: rgba(255, 255, 255, 0.83);
 }
 
+.footer {
+	background: #000;
+	height: auto;
+	width: 100%;
+	padding-top: 50px;
+	color: #fff;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-bottom: 50px;
 }
+
+.footer .logo {
+	  display: block;
+	 margin-left: auto;
+  	margin-right: auto;
+  	height:150px;
+}
+
+.collage__imagery .collage__imagery__heading {
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-bottom: 0;
+    color: #ffd300;
+    font-family: "nimbus-sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height: .75;
+    font-weight: 600;
+    font-size: 120px;
+    font-size: 8rem;
+    letter-spacing: 0.025em;
+    z-index: 20;
+}
+
+.collage__imagery {
+	padding-left: 30px;
+	padding-bottom: 3rem;
+}
+
+.collage__imagery .collage__imagery__heading span {
+    display: block;
+}
+
+.collage_copy_content p {
+    padding-left: 10px;
+    padding-top:50px;
+    color: #333;
+}
+
+p {
+    font-family: "nimbus-sans","Helvetica Neue",Helvetica,Arial,sans-serif !important;
+    font-size: 18px;
+    font-size: 1.08rem;    
+    line-height: 1.75;
+    
+}
+
 }

@@ -8,7 +8,7 @@
 users = (ArrayList) request.getAttribute("viewUsers");
 
 %>
-<div class=container>
+<div class=container style="margin-top:100px;">
 
 <table class="table table-hover">
 <thead class="thead-light">
