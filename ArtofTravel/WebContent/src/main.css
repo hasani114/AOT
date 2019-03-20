@@ -4,8 +4,10 @@ html {
   background-color: #fefefe;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
-  /* font-size: 14px;
-  font-weight: 500; */
+  overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+    height: 101%;
+
 }
 
 *, *:before, *:after {
