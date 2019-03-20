@@ -1,5 +1,5 @@
 <%@ include file = "/templates/header.jsp" %>
-<%@ include file = "/templates/banners/about-us.jsp" %>
+<%@ include file = "/templates/banners/home-2.jsp" %>
 <div class="container pt-5">
 
 <h1>For the first time in Pakistan...</h1>
